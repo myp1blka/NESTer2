@@ -75,6 +75,42 @@ Public Class frmMain
         prDeleteRom()
     End Sub
 
+    Private Sub ListBoxRoms_KeyDown(sender As Object, e As KeyEventArgs) Handles ListBoxRoms.KeyDown
+        ' prMsgToLog("ListBoxRoms_KeyDown - " & e.KeyCode)
+
+
+        ' What key pressing user ?
+        Dim IsLetter As Boolean = (e.KeyCode >= 65 AndAlso e.KeyCode <= 90) OrElse (e.KeyCode >= 97 AndAlso e.KeyCode <= 122)
+        Dim IsNumber As Boolean = (e.KeyCode >= 48 AndAlso e.KeyCode <= 57)
+        Dim IsWhiteSpace As Boolean = (e.KeyCode = 9) OrElse (e.KeyCode = 13) OrElse (e.KeyCode = 32)
+        ' Delete Rom by pressing Delete on keyboard
+        If e.KeyCode = Keys.Delete And ListBoxRoms.SelectedIndex <> -1 Then
+            prDeleteRom()
+            ' Start Rom by pressing Enter on keyboard
+        ElseIf e.KeyCode = Keys.Enter And ListBoxRoms.SelectedIndex <> -1 Then
+            prLoadRom(ListBoxRoms.SelectedIndex)
+            ' Get About Window by pressing F1 on keyboard
+        ElseIf e.KeyCode = Keys.F1 Then
+            frmStartup.Show()
+            ' Rename Rom by pressing F2 on keyboard
+        ElseIf e.KeyCode = Keys.F2 And ListBoxRoms.SelectedIndex <> -1 Then
+            prRenameGame(ListBoxRoms.SelectedIndex)
+            ' Focused on Searchbox by pressing F3 on keyboard
+        ElseIf e.KeyCode = Keys.F3 Then
+            toolbarTxtSearch.Focus()
+            ' Reload list of Rom's by pressing F5 on keyboard
+        ElseIf e.KeyCode = Keys.F5 Then
+            prLoadListOfFiles()
+            ' Jump to Searchbox by pressing Letter or Number or WhiteSpace on keyboard
+        ElseIf IsLetter OrElse IsWhiteSpace OrElse IsNumber Then
+            toolbarTxtSearch.Focus()
+            toolbarTxtSearch.Text += ChrW(e.KeyCode)
+            toolbarTxtSearch.SelectionStart = 1
+            'prMsgToLog("IsLetter = " & IsLetter & "   IsWhiteSpace = " & IsWhiteSpace & "   IsNumber = " & IsNumber)
+        End If
+
+    End Sub
+
     Private Sub TrayIcon_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles TrayIcon.MouseDoubleClick
         If Me.WindowState = FormWindowState.Minimized Then
             Me.WindowState = FormWindowState.Normal
@@ -291,6 +327,7 @@ Public Class frmMain
         'prCheckFavorite(ListBoxRoms.SelectedIndex)
     End Sub
 
+    Private Sub Toolbar_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles Toolbar.ItemClicked
 
-
+    End Sub
 End Class

@@ -4,9 +4,9 @@ Imports System.IO                       ' working with files and folders
 Imports System.Text.RegularExpressions  ' working with regular expressions
 Module modMain
     ' Program information
-    Public pName = "NESTer ", pVersion = "2.24 ", pBuild = "240426.1740"
+    Public pName = "NESTer ", pVersion = "2.24 ", pBuild = "240427.0110"
     'pVersion is version of program (2) and year of build (2024)
-    'pBuild is full date of build
+    'pBuild is full date and time of build
     Public pAuthor = "muratovskyi@gmail.com " ' Vitalii Muratovskyi
     '
     Public pDebugMode = 0
