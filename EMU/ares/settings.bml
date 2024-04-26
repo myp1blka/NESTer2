@@ -1,0 +1,413 @@
+Video
+  Driver: OpenGL 3.2
+  Monitor: Primary
+  Format: ARGB24
+  Exclusive: false
+  Blocking: false
+  Flush: false
+  Shader: None
+  Multiplier: 2
+  Output: Scale
+  AspectCorrection: true
+  AdaptiveSizing: true
+  AutoCentering: false
+  Luminance: 1.0
+  Saturation: 1.0
+  Gamma: 1.0
+  ColorBleed: false
+  ColorEmulation: true
+  DeepBlackBoost: false
+  InterframeBlending: true
+  Overscan: false
+  PixelAccuracy: false
+  Quality: SD
+  Supersampling: false
+  DisableVideoInterfaceProcessing: false
+  WeaveDeinterlacing: true
+Audio
+  Driver: WASAPI
+  Device: Speakers (Realtek High Definition Audio)
+  Frequency: 48000
+  Latency: 0
+  Exclusive: false
+  Blocking: true
+  Dynamic: false
+  Mute: false
+  Volume: 1.0
+  Balance: 0.0
+Input
+  Driver: SDL
+  Defocus: Pause
+Boot
+  Fast: false
+  Debugger: false
+  Prefer: NTSC-U
+General
+  ShowStatusBar: true
+  Rewind: false
+  RunAhead: false
+  AutoSaveMemory: true
+  HomebrewMode: false
+Rewind
+  Length: 100
+  Frequency: 10
+Paths
+  Home
+  Firmware
+  Saves: D:/dev/GameEmulators/ares-137windows/ares-v137/Saves/
+  Screenshots: D:/dev/GameEmulators/ares-137windows/ares-v137/Screenshot/
+  Debugging
+  ArcadeRoms
+  SuperFamicom
+    GameBoy
+    BSMemory
+    SufamiTurbo
+DebugServer
+  Port: 9123
+  Enabled: false
+  UseIPv4: false
+Nintendo64
+  ExpansionPak: true
+  Visible: true
+  Path
+Recent
+  Game-1: Super Famicom;D:/dev/WindowsProgram/GameEmulators/NESter2lite/Source/NESTer2/ROM/SNES/Addams Family Values (U) [t22].zip
+  Game-2: Super Famicom;D:/dev/WindowsProgram/GameEmulators/NESter2lite/Source/NESTer2/ROM/SNES/Addams Family Values (U) [T-Spa40%].zip
+  Game-3: Super Famicom;../../ROM/SNES/Addams Family Values (U) [T-Spa40%].zip
+  Game-4: Super Famicom;../../ROM/SNES/Addams Family Values (U) [b1].zip
+  Game-5: Super Famicom;../../ROM/SNES/Addams Family Values (U) [t22].zip
+  Game-6: Super Famicom;../../ROM/SNES/Addams Family Values (U) [T+Spa99.9%_DarkN].zip
+  Game-7: Super Famicom;../../ROM/SNES/Addams Family Values (U) [T-Spa99%_DarkN].zip
+  Game-8: Super Famicom;../../ROM/SNES/Addams Family Values (E).zip
+  Game-9: Super Famicom;../../ROM/SNES/Addams Family Values (U) [t2].zip
+VirtualPad1
+  Pad.Up: ;;
+  Pad.Down: ;;
+  Pad.Left: ;;
+  Pad.Right: ;;
+  Select: ;;
+  Start: ;;
+  A..South: ;;
+  B..East: ;;
+  X..West: ;;
+  Y..North: ;;
+  L-Bumper: ;;
+  R-Bumper: ;;
+  L-Trigger: ;;
+  R-Trigger: ;;
+  L-Stick..Click: ;;
+  R-Stick..Click: ;;
+  L-Up: ;;
+  L-Down: ;;
+  L-Left: ;;
+  L-Right: ;;
+  R-Up: ;;
+  R-Down: ;;
+  R-Left: ;;
+  R-Right: ;;
+  Rumble: ;;
+VirtualMouse1
+  X: ;;
+  Y: ;;
+  Left: ;;
+  Middle: ;;
+  Right: ;;
+  Extra: ;;
+VirtualPad2
+  Pad.Up: ;;
+  Pad.Down: ;;
+  Pad.Left: ;;
+  Pad.Right: ;;
+  Select: ;;
+  Start: ;;
+  A..South: ;;
+  B..East: ;;
+  X..West: ;;
+  Y..North: ;;
+  L-Bumper: ;;
+  R-Bumper: ;;
+  L-Trigger: ;;
+  R-Trigger: ;;
+  L-Stick..Click: ;;
+  R-Stick..Click: ;;
+  L-Up: ;;
+  L-Down: ;;
+  L-Left: ;;
+  L-Right: ;;
+  R-Up: ;;
+  R-Down: ;;
+  R-Left: ;;
+  R-Right: ;;
+  Rumble: ;;
+VirtualMouse2
+  X: ;;
+  Y: ;;
+  Left: ;;
+  Middle: ;;
+  Right: ;;
+  Extra: ;;
+VirtualPad3
+  Pad.Up: ;;
+  Pad.Down: ;;
+  Pad.Left: ;;
+  Pad.Right: ;;
+  Select: ;;
+  Start: ;;
+  A..South: ;;
+  B..East: ;;
+  X..West: ;;
+  Y..North: ;;
+  L-Bumper: ;;
+  R-Bumper: ;;
+  L-Trigger: ;;
+  R-Trigger: ;;
+  L-Stick..Click: ;;
+  R-Stick..Click: ;;
+  L-Up: ;;
+  L-Down: ;;
+  L-Left: ;;
+  L-Right: ;;
+  R-Up: ;;
+  R-Down: ;;
+  R-Left: ;;
+  R-Right: ;;
+  Rumble: ;;
+VirtualMouse3
+  X: ;;
+  Y: ;;
+  Left: ;;
+  Middle: ;;
+  Right: ;;
+  Extra: ;;
+VirtualPad4
+  Pad.Up: ;;
+  Pad.Down: ;;
+  Pad.Left: ;;
+  Pad.Right: ;;
+  Select: ;;
+  Start: ;;
+  A..South: ;;
+  B..East: ;;
+  X..West: ;;
+  Y..North: ;;
+  L-Bumper: ;;
+  R-Bumper: ;;
+  L-Trigger: ;;
+  R-Trigger: ;;
+  L-Stick..Click: ;;
+  R-Stick..Click: ;;
+  L-Up: ;;
+  L-Down: ;;
+  L-Left: ;;
+  L-Right: ;;
+  R-Up: ;;
+  R-Down: ;;
+  R-Left: ;;
+  R-Right: ;;
+  Rumble: ;;
+VirtualMouse4
+  X: ;;
+  Y: ;;
+  Left: ;;
+  Middle: ;;
+  Right: ;;
+  Extra: ;;
+VirtualPad5
+  Pad.Up: ;;
+  Pad.Down: ;;
+  Pad.Left: ;;
+  Pad.Right: ;;
+  Select: ;;
+  Start: ;;
+  A..South: ;;
+  B..East: ;;
+  X..West: ;;
+  Y..North: ;;
+  L-Bumper: ;;
+  R-Bumper: ;;
+  L-Trigger: ;;
+  R-Trigger: ;;
+  L-Stick..Click: ;;
+  R-Stick..Click: ;;
+  L-Up: ;;
+  L-Down: ;;
+  L-Left: ;;
+  L-Right: ;;
+  R-Up: ;;
+  R-Down: ;;
+  R-Left: ;;
+  R-Right: ;;
+  Rumble: ;;
+VirtualMouse5
+  X: ;;
+  Y: ;;
+  Left: ;;
+  Middle: ;;
+  Right: ;;
+  Extra: ;;
+Hotkey
+  ToggleFullscreen: 0x1/0/40;;
+  ToggleMouseCapture: ;;
+  ToggleKeyboardCapture: ;;
+  FastForward: ;;
+  ToggleFastForward: ;;
+  Rewind: ;;
+  FrameAdvance: ;;
+  CaptureScreenshot: 0x1/0/4;;
+  SaveState: 0x1/0/5;;
+  LoadState: 0x1/0/8;;
+  DecrementStateSlot: ;;
+  IncrementStateSlot: ;;
+  PauseEmulation: 0x1/0/50;;
+  ResetSystem: 0x1/0/52;;
+  ReloadCurrentGame: 0x1/0/54;;
+  QuitEmulator: ;;
+  MuteAudio: 0x1/0/47;;
+  IncreaseAudio: 0x1/0/67;;
+  DecreaseAudio: 0x1/0/66;;
+Arcade
+  Visible: false
+  Path
+Atari2600
+  Visible: false
+  Path: C:/Users/User/Desktop/
+WonderSwan
+  Visible: false
+  Path
+WonderSwanColor
+  Visible: false
+  Path
+PocketChallengeV2
+  Visible: false
+  Path
+ColecoVision
+  Visible: false
+  Path
+  Firmware
+    BIOS.World
+MyVision
+  Visible: false
+  Path
+MSX
+  Visible: false
+  Path
+  Firmware
+    BIOS.Japan
+MSX2
+  Visible: false
+  Path
+  Firmware
+    MAIN.Japan
+    SUB.Japan
+PCEngine
+  Visible: false
+  Path
+PCEngineCD
+  Visible: false
+  Path
+  Firmware
+    System-Card-1.0.Japan
+    System-Card-3.0.Japan
+    System-Card-3.0.US
+    Games-Express.Japan
+SuperGrafx
+  Visible: false
+  Path
+SuperGrafxCD
+  Visible: false
+  Path
+  Firmware
+    System-Card-3.0.Japan
+Famicom
+  Visible: true
+  Path: C:/Users/User/Desktop/
+FamicomDiskSystem
+  Visible: true
+  Path
+  Firmware
+    BIOS.Japan
+SuperFamicom
+  Visible: true
+  Path: D:/dev/WindowsProgram/GameEmulators/NESter2lite/Source/NESTer2/ROM/SNES/
+Nintendo64DD
+  Visible: true
+  Path
+  Firmware
+    BIOS.Japan
+    BIOS.US
+    BIOS.DEV
+GameBoy
+  Visible: true
+  Path
+GameBoyColor
+  Visible: true
+  Path
+GameBoyAdvance
+  Visible: true
+  Path
+  Firmware
+    BIOS.World
+SG-1000
+  Visible: true
+  Path
+MasterSystem
+  Visible: false
+  Path
+  Firmware
+    BIOS.US
+    BIOS.Japan
+    BIOS.Europe
+GameGear
+  Visible: true
+  Path
+  Firmware
+    BIOS.World
+MegaDrive
+  Visible: true
+  Path: C:/Users/User/Desktop/
+Mega32X
+  Visible: true
+  Path
+MegaCD
+  Visible: false
+  Path
+  Firmware
+    BIOS.US
+    BIOS.Japan
+    BIOS.Europe
+MegaCD32X
+  Visible: false
+  Path
+NeoGeoAES
+  Visible: false
+  Path
+  Firmware
+    BIOS.World
+NeoGeoMVS
+  Visible: false
+  Path
+  Firmware
+    BIOS.World
+NeoGeoPocket
+  Visible: false
+  Path
+  Firmware
+    BIOS.World
+NeoGeoPocketColor
+  Visible: false
+  Path
+  Firmware
+    BIOS.World
+PlayStation
+  Visible: false
+  Path: D:/dev/GameEmulators/ROM/PS1/Grand Theft Auto - Vice City Stories (Europe) (PSP) (PSN)/
+  Firmware
+    BIOS.US
+    BIOS.Japan
+    BIOS.Europe
+ZXSpectrum
+  Visible: false
+  Path
+ZXSpectrum128
+  Visible: false
+  Path

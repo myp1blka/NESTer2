@@ -1,0 +1,3 @@
+Reading config file D:\dev\WindowsProgram\GameEmulators\NESter2lite\Source\NESTer2\EMU\snes9x\snes9x.conf.
+Saving	config file	D:\dev\WindowsProgram\GameEmulators\NESter2lite\Source\NESTer2\EMU\snes9x\snes9x.conf
+Saving	config file	D:\dev\WindowsProgram\GameEmulators\NESter2lite\Source\NESTer2\EMU\snes9x\snes9x.conf

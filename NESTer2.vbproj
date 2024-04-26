@@ -1,0 +1,489 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1836E977-6252-4B34-9049-4FAADE69AC65}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>NESTer2.My.MyApplication</StartupObject>
+    <RootNamespace>NESTer2</RootNamespace>
+    <AssemblyName>NESTer2</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionStrict>Off</OptionStrict>
+    <OptionInfer>On</OptionInfer>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+    <ApplicationIcon>Glasses-Creature.ico</ApplicationIcon>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <ManifestCertificateThumbprint>F3D4DD7A4AF076930FC9B8F2A32CC14E509C93D0</ManifestCertificateThumbprint>
+    <ManifestKeyFile>NESster_TemporaryKey.pfx</ManifestKeyFile>
+    <GenerateManifests>false</GenerateManifests>
+    <SignManifests>false</SignManifests>
+    <TargetZone>LocalIntranet</TargetZone>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkProfile />
+    <PublishUrl>\pub\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>false</MapFileExtensions>
+    <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
+    <ApplicationRevision>86</ApplicationRevision>
+    <ApplicationVersion>2.24.30.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>false</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>false</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisIgnoreGeneratedCode>false</CodeAnalysisIgnoreGeneratedCode>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>false</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>..\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <PlatformTarget>x86</PlatformTarget>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <DebugSymbols>true</DebugSymbols>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="frmMain.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.vb">
+      <DependentUpon>frmMain.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmStartup.Designer.vb">
+      <DependentUpon>frmStartup.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmStartup.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmViewScreen.Designer.vb">
+      <DependentUpon>frmViewScreen.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmViewScreen.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modMain.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmStartup.resx">
+      <DependentUpon>frmStartup.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmViewScreen.resx">
+      <DependentUpon>frmViewScreen.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\app.manifest" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="settings.ini">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>Клиентский профиль .NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Glasses-Creature.ico" />
+    <None Include="Resources\about.gif" />
+    <None Include="Resources\about1.gif" />
+    <None Include="Resources\add.gif" />
+    <None Include="Resources\add1.gif" />
+    <None Include="Resources\add2.gif" />
+    <None Include="Resources\adim.gif" />
+    <None Include="Resources\admin.gif" />
+    <None Include="Resources\app.gif" />
+    <None Include="Resources\app_edit.gif" />
+    <None Include="Resources\app_largeicons.gif" />
+    <None Include="Resources\app_options.gif" />
+    <None Include="Resources\app1.gif" />
+    <None Include="Resources\applications.gif" />
+    <None Include="Resources\applications2.gif" />
+    <None Include="Resources\appllications2.gif" />
+    <None Include="Resources\apply.gif" />
+    <None Include="Resources\apply1.gif" />
+    <None Include="Resources\apply2.gif" />
+    <None Include="Resources\apps.gif" />
+    <None Include="Resources\ball_blue.gif" />
+    <None Include="Resources\ball_gray.gif" />
+    <None Include="Resources\ball_green.gif" />
+    <None Include="Resources\ball_green1.gif" />
+    <None Include="Resources\ball_red.gif" />
+    <None Include="Resources\ball_red1.gif" />
+    <None Include="Resources\ball_white.gif" />
+    <None Include="Resources\ball_yellow.gif" />
+    <None Include="Resources\ball_yellow1.gif" />
+    <None Include="Resources\banner_blue.gif" />
+    <None Include="Resources\banner_gray.gif" />
+    <None Include="Resources\banner_green.gif" />
+    <None Include="Resources\banner_red.gif" />
+    <None Include="Resources\banner_yellow.gif" />
+    <None Include="Resources\basket.gif" />
+    <None Include="Resources\baskey_full.gif" />
+    <None Include="Resources\block.gif" />
+    <None Include="Resources\block1.gif" />
+    <None Include="Resources\bookmark.gif" />
+    <None Include="Resources\bookmark1.gif" />
+    <None Include="Resources\bt_eject.gif" />
+    <None Include="Resources\bt_eject1.gif" />
+    <None Include="Resources\bt_ff.gif" />
+    <None Include="Resources\bt_ff1.gif" />
+    <None Include="Resources\bt_open.gif" />
+    <None Include="Resources\bt_pause.gif" />
+    <None Include="Resources\bt_pause1.gif" />
+    <None Include="Resources\bt_play.gif" />
+    <None Include="Resources\bt_play1.gif" />
+    <None Include="Resources\bt_rec.gif" />
+    <None Include="Resources\bt_rec1.gif" />
+    <None Include="Resources\bt_refresh.gif" />
+    <None Include="Resources\bt_rev.gif" />
+    <None Include="Resources\bt_rev1.gif" />
+    <None Include="Resources\bt_skip_bk.gif" />
+    <None Include="Resources\bt_skip_bk1.gif" />
+    <None Include="Resources\bt_skip_sw.gif" />
+    <None Include="Resources\bt_skip_sw1.gif" />
+    <None Include="Resources\bt_stop.gif" />
+    <None Include="Resources\bt_stop1.gif" />
+    <None Include="Resources\bulb.gif" />
+    <None Include="Resources\bulb_off.gif" />
+    <None Include="Resources\burn.gif" />
+    <None Include="Resources\calculator.gif" />
+    <None Include="Resources\calculator1.gif" />
+    <None Include="Resources\calendar.gif" />
+    <None Include="Resources\calendar1.gif" />
+    <None Include="Resources\cam.gif" />
+    <None Include="Resources\cancel.gif" />
+    <None Include="Resources\card-machine.gif" />
+    <None Include="Resources\cascate.gif" />
+    <None Include="Resources\cd.gif" />
+    <None Include="Resources\cd1.gif" />
+    <None Include="Resources\chart.gif" />
+    <None Include="Resources\chart1.gif" />
+    <None Include="Resources\chat.gif" />
+    <None Include="Resources\chat1.gif" />
+    <None Include="Resources\chicara.gif" />
+    <None Include="Resources\computer.gif" />
+    <None Include="Resources\computer1.gif" />
+    <None Include="Resources\contact_list.gif" />
+    <None Include="Resources\contacts.gif" />
+    <None Include="Resources\copy.gif" />
+    <None Include="Resources\copy1.gif" />
+    <None Include="Resources\credit_card.gif" />
+    <None Include="Resources\cut.gif" />
+    <None Include="Resources\cut1.gif" />
+    <None Include="Resources\data.gif" />
+    <None Include="Resources\data_add.gif" />
+    <None Include="Resources\data_cd.gif" />
+    <None Include="Resources\data_down.gif" />
+    <None Include="Resources\data_edit.gif" />
+    <None Include="Resources\data_find.gif" />
+    <None Include="Resources\data_remove.gif" />
+    <None Include="Resources\data_up.gif" />
+    <None Include="Resources\data_web.gif" />
+    <None Include="Resources\data1.gif" />
+    <None Include="Resources\datas.gif" />
+    <None Include="Resources\del.gif" />
+    <None Include="Resources\delete.gif" />
+    <None Include="Resources\delete1.gif" />
+    <None Include="Resources\delivery.gif" />
+    <None Include="Resources\documents.gif" />
+    <None Include="Resources\dollar.gif" />
+    <None Include="Resources\down.gif" />
+    <None Include="Resources\downloads.gif" />
+    <None Include="Resources\edit.gif" />
+    <None Include="Resources\euro.gif" />
+    <None Include="Resources\exec.gif" />
+    <None Include="Resources\export.gif" />
+    <None Include="Resources\favorits.gif" />
+    <None Include="Resources\favorits_add.gif" />
+    <None Include="Resources\favorits_add1.gif" />
+    <None Include="Resources\favorits_remove.gif" />
+    <None Include="Resources\favorits1.gif" />
+    <None Include="Resources\fax.gif" />
+    <None Include="Resources\fax1.gif" />
+    <None Include="Resources\file_apply.gif" />
+    <None Include="Resources\file_chart.gif" />
+    <None Include="Resources\file_delete.gif" />
+    <None Include="Resources\file_find.gif" />
+    <None Include="Resources\file_lock.gif" />
+    <None Include="Resources\file_lock1.gif" />
+    <None Include="Resources\file_music.gif" />
+    <None Include="Resources\file_remove.gif" />
+    <None Include="Resources\file_temp.gif" />
+    <None Include="Resources\file_temp1.gif" />
+    <None Include="Resources\file_web.gif" />
+    <None Include="Resources\file_web1.gif" />
+    <None Include="Resources\files.gif" />
+    <None Include="Resources\files_add.gif" />
+    <None Include="Resources\files_apply.gif" />
+    <None Include="Resources\files_edit.gif" />
+    <None Include="Resources\files_exec.gif" />
+    <None Include="Resources\files_export.gif" />
+    <None Include="Resources\files_find.gif" />
+    <None Include="Resources\files_image.gif" />
+    <None Include="Resources\files_import.gif" />
+    <None Include="Resources\files_remove.gif" />
+    <None Include="Resources\find.gif" />
+    <None Include="Resources\first_aid.gif" />
+    <None Include="Resources\folder.gif" />
+    <None Include="Resources\folder_add.gif" />
+    <None Include="Resources\folder_down.gif" />
+    <None Include="Resources\folder_favorits.gif" />
+    <None Include="Resources\folder_find.gif" />
+    <None Include="Resources\folder_find1.gif" />
+    <None Include="Resources\folder_image.gif" />
+    <None Include="Resources\folder_new.gif" />
+    <None Include="Resources\folder_open.gif" />
+    <None Include="Resources\folder_remove.gif" />
+    <None Include="Resources\folder_up.gif" />
+    <None Include="Resources\folder1.gif" />
+    <None Include="Resources\font.gif" />
+    <None Include="Resources\gallery.gif" />
+    <None Include="Resources\game.gif" />
+    <None Include="Resources\games.gif" />
+    <None Include="Resources\hard-disk.gif" />
+    <None Include="Resources\hard-disk_web.gif" />
+    <None Include="Resources\hd.gif" />
+    <None Include="Resources\hd_down.gif" />
+    <None Include="Resources\hd_find.gif" />
+    <None Include="Resources\hd_up.gif" />
+    <None Include="Resources\hd_web.gif" />
+    <None Include="Resources\help.gif" />
+    <None Include="Resources\help1.gif" />
+    <None Include="Resources\history.gif" />
+    <None Include="Resources\history1.gif" />
+    <None Include="Resources\home.gif" />
+    <None Include="Resources\home1.gif" />
+    <None Include="Resources\import.gif" />
+    <None Include="Resources\info.gif" />
+    <None Include="Resources\info1.gif" />
+    <None Include="Resources\key.gif" />
+    <None Include="Resources\large_icons.gif" />
+    <None Include="Resources\left.gif" />
+    <None Include="Resources\link.gif" />
+    <None Include="Resources\lock.gif" />
+    <None Include="Resources\lock1.gif" />
+    <None Include="Resources\mail.gif" />
+    <None Include="Resources\mail_add.gif" />
+    <None Include="Resources\mail_down.gif" />
+    <None Include="Resources\mail_exclude.gif" />
+    <None Include="Resources\mail_send.gif" />
+    <None Include="Resources\mail_write.gif" />
+    <None Include="Resources\mail1.gif" />
+    <None Include="Resources\map.gif" />
+    <None Include="Resources\money.gif" />
+    <None Include="Resources\money1.gif" />
+    <None Include="Resources\move.gif" />
+    <None Include="Resources\muisc_cd.gif" />
+    <None Include="Resources\music.gif" />
+    <None Include="Resources\music_off.gif" />
+    <None Include="Resources\music_off1.gif" />
+    <None Include="Resources\music1.gif" />
+    <None Include="Resources\network.gif" />
+    <None Include="Resources\network_app.gif" />
+    <None Include="Resources\network_find.gif" />
+    <None Include="Resources\network_links.gif" />
+    <None Include="Resources\new.gif" />
+    <None Include="Resources\new1.gif" />
+    <None Include="Resources\note.gif" />
+    <None Include="Resources\objects.gif" />
+    <None Include="Resources\open.gif" />
+    <None Include="Resources\options.gif" />
+    <None Include="Resources\pack.gif" />
+    <None Include="Resources\paint.gif" />
+    <None Include="Resources\paste.gif" />
+    <None Include="Resources\paste1.gif" />
+    <None Include="Resources\pencil.gif" />
+    <None Include="Resources\phone.gif" />
+    <None Include="Resources\phone1.gif" />
+    <None Include="Resources\picture.gif" />
+    <None Include="Resources\picture1.gif" />
+    <None Include="Resources\pictures.gif" />
+    <None Include="Resources\print.gif" />
+    <None Include="Resources\print_preview.gif" />
+    <None Include="Resources\print_preview1.gif" />
+    <None Include="Resources\print1.gif" />
+    <None Include="Resources\private.gif" />
+    <None Include="Resources\rec.gif" />
+    <None Include="Resources\redo.gif" />
+    <None Include="Resources\redo1.gif" />
+    <None Include="Resources\refresh.gif" />
+    <None Include="Resources\refresh1.gif" />
+    <None Include="Resources\remove.gif" />
+    <None Include="Resources\remove1.gif" />
+    <None Include="Resources\right.gif" />
+    <None Include="Resources\save.gif" />
+    <None Include="Resources\save_as.gif" />
+    <None Include="Resources\save_as2.gif" />
+    <None Include="Resources\save_as21.gif" />
+    <None Include="Resources\save1.gif" />
+    <None Include="Resources\search.gif" />
+    <None Include="Resources\settings.gif" />
+    <None Include="Resources\shop_card.gif" />
+    <None Include="Resources\shop_card_full.gif" />
+    <None Include="Resources\sitemap.gif" />
+    <None Include="Resources\smile_1.gif" />
+    <None Include="Resources\smile_2.gif" />
+    <None Include="Resources\smile_3.gif" />
+    <None Include="Resources\smile_4.gif" />
+    <None Include="Resources\smile_5.gif" />
+    <None Include="Resources\smile_6.gif" />
+    <None Include="Resources\smyle.gif" />
+    <None Include="Resources\soud_disable.gif" />
+    <None Include="Resources\sound.gif" />
+    <None Include="Resources\sound_down.gif" />
+    <None Include="Resources\sound_up.gif" />
+    <None Include="Resources\star.gif" />
+    <None Include="Resources\star_off.gif" />
+    <None Include="Resources\toolbox.gif" />
+    <None Include="Resources\tool-box.gif" />
+    <None Include="Resources\trash.gif" />
+    <None Include="Resources\trash_full.gif" />
+    <None Include="Resources\trash1.gif" />
+    <None Include="Resources\undo.gif" />
+    <None Include="Resources\undo1.gif" />
+    <None Include="Resources\unlock.gif" />
+    <None Include="Resources\unlock1.gif" />
+    <None Include="Resources\unpack.gif" />
+    <None Include="Resources\up.gif" />
+    <None Include="Resources\upload.gif" />
+    <None Include="Resources\user.gif" />
+    <None Include="Resources\user_add.gif" />
+    <None Include="Resources\user_edit.gif" />
+    <None Include="Resources\user_off.gif" />
+    <None Include="Resources\user_remove.gif" />
+    <None Include="Resources\user1.gif" />
+    <None Include="Resources\users.gif" />
+    <None Include="Resources\users1.gif" />
+    <None Include="Resources\videos.gif" />
+    <None Include="Resources\web.gif" />
+    <None Include="Resources\web_app.gif" />
+    <None Include="Resources\web_down.gif" />
+    <None Include="Resources\web_find.gif" />
+    <None Include="Resources\web_mail.gif" />
+    <None Include="Resources\web_server.gif" />
+    <None Include="Resources\web_server_off.gif" />
+    <None Include="Resources\web_up.gif" />
+    <None Include="Resources\wizard.gif" />
+    <None Include="Resources\wizard1.gif" />
+    <None Include="Resources\zoom_in.gif" />
+    <None Include="Resources\zoom_out.gif" />
+    <None Include="Resources\zoom-in.gif" />
+    <None Include="Resources\zoom-out.gif" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
