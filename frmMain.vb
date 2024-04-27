@@ -1,5 +1,6 @@
 ﻿
 Imports System.ComponentModel
+Imports System.IO
 
 Public Class frmMain
     Public pMeHeight As Integer
@@ -83,7 +84,7 @@ Public Class frmMain
         Dim IsLetter As Boolean = (e.KeyCode >= 65 AndAlso e.KeyCode <= 90) OrElse (e.KeyCode >= 97 AndAlso e.KeyCode <= 122)
         Dim IsNumber As Boolean = (e.KeyCode >= 48 AndAlso e.KeyCode <= 57)
         Dim IsWhiteSpace As Boolean = (e.KeyCode = 9) OrElse (e.KeyCode = 13) OrElse (e.KeyCode = 32)
-        ' Delete Rom by pressing Delete on keyboard
+            ' Delete Rom by pressing Delete on keyboard
         If e.KeyCode = Keys.Delete And ListBoxRoms.SelectedIndex <> -1 Then
             prDeleteRom()
             ' Start Rom by pressing Enter on keyboard
@@ -101,13 +102,20 @@ Public Class frmMain
             ' Reload list of Rom's by pressing F5 on keyboard
         ElseIf e.KeyCode = Keys.F5 Then
             prLoadListOfFiles()
+            ' Add or Remove from Favorites by pressing F4 on keyboard
+        ElseIf e.KeyCode = Keys.F4 And ListBoxRoms.SelectedIndex <> -1 Then
+            If Strings.Right(Path.GetFileNameWithoutExtension(mFilesInDir(ListBoxRoms.SelectedIndex)), 5) = "[FAV]" Then
+                prRemoveFromFavorite(ListBoxRoms.SelectedIndex)
+            Else prAddToFavorite(ListBoxRoms.SelectedIndex)
+            End If
+            prCheckFavorite(ListBoxRoms.SelectedIndex)
             ' Jump to Searchbox by pressing Letter or Number or WhiteSpace on keyboard
         ElseIf IsLetter OrElse IsWhiteSpace OrElse IsNumber Then
-            toolbarTxtSearch.Focus()
-            toolbarTxtSearch.Text += ChrW(e.KeyCode)
-            toolbarTxtSearch.SelectionStart = 1
-            'prMsgToLog("IsLetter = " & IsLetter & "   IsWhiteSpace = " & IsWhiteSpace & "   IsNumber = " & IsNumber)
-        End If
+toolbarTxtSearch.Focus()
+toolbarTxtSearch.Text += ChrW(e.KeyCode)
+toolbarTxtSearch.SelectionStart = 1
+'prMsgToLog("IsLetter = " & IsLetter & "   IsWhiteSpace = " & IsWhiteSpace & "   IsNumber = " & IsNumber)
+End If
 
     End Sub
 
@@ -191,11 +199,11 @@ Public Class frmMain
     End Sub
 
     Private Sub toolbarBtnShowSet_Click(sender As Object, e As EventArgs) Handles toolbarBtnShowSet.Click
-        If Me.Width <= pMeWidth Then Me.Width = pMeWidth + 280 Else Me.Width = Me.Width - 280 ' open / close setting panel
+        If Me.Width <= pMeWidth Then Me.Width= pMeWidth + 280 Else Me.Width= Me.Width - 280 ' open / close setting panel
     End Sub
 
     Private Sub toolbarBtnShowLog_Click(sender As Object, e As EventArgs) Handles toolbarBtnShowLog.Click
-        If Me.Height <= pMeHeight Then Me.Height = pMeHeight + 150 Else Me.Height = Me.Height - 150 ' open / close logfile panel
+        If Me.Height <= pMeHeight Then Me.Height= pMeHeight + 150 Else Me.Height= Me.Height - 150 ' open / close logfile panel
     End Sub
 
     Private Sub toolbarBtnShowAbout_Click(sender As Object, e As EventArgs) Handles toolbarBtnShowAbout.Click
@@ -207,10 +215,10 @@ Public Class frmMain
         If toolbarBtnTranslated.Checked = True Then
             pTranslatedStatus = ""
             toolbarBtnTranslated.Checked = False
-            prWriteSettings("main", "CurentTranslated", "N") 'No
+            prWriteSettings("main", "CurentTranslated", "N") ' No
         Else
-            pTranslatedStatus = "*[T"
-            toolbarBtnTranslated.Checked = True
+            pTranslatedStatus="*[T"
+                         toolbarBtnTranslated.Checked= True
             prWriteSettings("main", "CurentTranslated", "Y") 'Yes
         End If
         prLoadListOfFiles()
