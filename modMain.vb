@@ -329,7 +329,7 @@ Module modMain
 
             frmMain.ListBoxScreens.Items.Clear()
             frmMain.ListBoxScreens.Items.AddRange(mScreensInDirWoExtPath)
-            prMsgToLog(mScreensInDir.Length & " Screenshots files found " & mFilesInDirWoExtPathTags(pSelIndex))
+            prMsgToLog(mFilesInDirWoExtPath(pSelIndex) & vbCrLf & "   " & mScreensInDir.Length & " Screenshots files found ")
             frmMain.MainMiniPictureBox.Enabled = True
             frmMain.lblScreensCounter.Visible = True
             If frmMain.ListBoxScreens.Items.Count > 0 Then frmMain.cmbNextScreen.Visible = True
@@ -359,6 +359,7 @@ Module modMain
             Dim pFilenameRename As String = InputBox(Path.GetFileName(mFilesInDir(pSelIndex)), "Rename ROM file", pFileNameOld)
             If pFilenameRename <> "" And pFilenameRename <> pFileNameOld Then
                 Rename(mFilesInDir(pSelIndex), Path.GetDirectoryName(mFilesInDir(pSelIndex)) & "\" & pFilenameRename)
+                prMsgToLog("[Renamed]" & vbCrLf & pFileNameOld & vbCrLf & "   to" & vbCrLf & pFilenameRename)
                 prLoadListOfFiles()
                 frmMain.ListBoxRoms.SelectedIndex = a
             End If
@@ -419,11 +420,10 @@ Module modMain
     Sub prLoadRom(ByVal pSelIndex As Short) ' Running ROM on an emulator
         Dim ProcID As Short
         If File.Exists(pPatchToEmulator) And File.Exists(mFilesInDir(pSelIndex)) Then ' If the paths are correct and the files exist
-            prMsgToLog("Emulator " & pPatchToEmulator)
-            prMsgToLog("Rom " & mFilesInDir(pSelIndex))
-
-
-            prMsgToLog("[ Commandline with full path ] : " & vbCrLf & """" & Path.GetFullPath(pPatchToEmulator) & """ """ & Path.GetFullPath(mFilesInDir(pSelIndex)) & """")
+            prMsgToLog("Emulator  " & pPatchToEmulator & vbCrLf &
+                       "Rom        " & mFilesInDir(pSelIndex))
+            prMsgToLog("[ CommandLine with full path ]" & vbCrLf &
+                       """" & Path.GetFullPath(pPatchToEmulator) & """ """ & Path.GetFullPath(mFilesInDir(pSelIndex)) & """")
 
 
             ProcID = Shell(
@@ -488,6 +488,7 @@ Module modMain
         If frmMain.ListBoxRoms.SelectedIndex <> -1 Then
             If MsgBox("Delete ?" & vbCrLf & vbCrLf & "   " & frmMain.ListBoxRoms.Text & "   ", 36) = MsgBoxResult.Yes Then
                 File.Delete(mFilesInDir(frmMain.ListBoxRoms.SelectedIndex))
+                prMsgToLog("[Deleted]" & vbCrLf & frmMain.ListBoxRoms.Text)
                 prLoadListOfFiles()
                 frmMain.ListBoxRoms.SelectedIndex = a - 1
             End If
@@ -544,7 +545,7 @@ mtkPrintErrorImage:
 
     ' Write data into a log text field
     Sub prMsgToLog(ByVal pMsg As String)
-        frmMain.txtLogBox.AppendText(vbCrLf & pMsg)
+        frmMain.txtLogBox.AppendText(vbCrLf & DateTime.Now.ToString("HH:mm:ss") & vbCrLf & pMsg)
 
         '  Alternative method
         'frmMain.txtLogBox.Text = frmMain.txtLogBox.Text & pMsg & vbCrLf
