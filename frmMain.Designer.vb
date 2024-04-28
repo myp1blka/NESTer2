@@ -242,7 +242,7 @@ Partial Class frmMain
         '
         'txtDescrSega
         '
-        Me.txtDescrSega.Location = New System.Drawing.Point(446, 268)
+        Me.txtDescrSega.Location = New System.Drawing.Point(445, 268)
         Me.txtDescrSega.Multiline = True
         Me.txtDescrSega.Name = "txtDescrSega"
         Me.txtDescrSega.ReadOnly = True
@@ -435,7 +435,7 @@ Partial Class frmMain
         'toolbarBtnShowAbout
         '
         Me.toolbarBtnShowAbout.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
-        Me.toolbarBtnShowAbout.Image = Global.NESTer2.My.Resources.Resources.help
+        Me.toolbarBtnShowAbout.Image = Global.NESTer2.My.Resources.Resources.about
         Me.toolbarBtnShowAbout.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.toolbarBtnShowAbout.Name = "toolbarBtnShowAbout"
         Me.toolbarBtnShowAbout.Size = New System.Drawing.Size(60, 22)

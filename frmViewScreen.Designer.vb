@@ -43,7 +43,7 @@ Partial Class frmViewScreen
         '
         'cmbNextScreen
         '
-        Me.cmbNextScreen.Location = New System.Drawing.Point(414, 0)
+        Me.cmbNextScreen.Location = New System.Drawing.Point(133, 0)
         Me.cmbNextScreen.Name = "cmbNextScreen"
         Me.cmbNextScreen.Size = New System.Drawing.Size(84, 23)
         Me.cmbNextScreen.TabIndex = 20
@@ -54,7 +54,7 @@ Partial Class frmViewScreen
         '
         Me.lblScreensCounter.AutoSize = True
         Me.lblScreensCounter.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.lblScreensCounter.Location = New System.Drawing.Point(354, 5)
+        Me.lblScreensCounter.Location = New System.Drawing.Point(90, 3)
         Me.lblScreensCounter.Name = "lblScreensCounter"
         Me.lblScreensCounter.Size = New System.Drawing.Size(37, 16)
         Me.lblScreensCounter.TabIndex = 22
@@ -62,7 +62,7 @@ Partial Class frmViewScreen
         '
         'cmbPrevScreen
         '
-        Me.cmbPrevScreen.Location = New System.Drawing.Point(242, 0)
+        Me.cmbPrevScreen.Location = New System.Drawing.Point(0, 2)
         Me.cmbPrevScreen.Name = "cmbPrevScreen"
         Me.cmbPrevScreen.Size = New System.Drawing.Size(84, 23)
         Me.cmbPrevScreen.TabIndex = 21
@@ -73,7 +73,7 @@ Partial Class frmViewScreen
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(567, 392)
+        Me.ClientSize = New System.Drawing.Size(496, 333)
         Me.Controls.Add(Me.cmbNextScreen)
         Me.Controls.Add(Me.lblScreensCounter)
         Me.Controls.Add(Me.cmbPrevScreen)

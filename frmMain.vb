@@ -14,6 +14,7 @@ Public Class frmMain
         'Me.TopMost = False
 
         If pDebugMode = 1 Then
+            toolbarBtnShowAbout.Image = NESTer2.My.Resources.Resources.info
             If Me.Width <= pMeWidth Then Me.Width = pMeWidth + 280 Else Me.Width = Me.Width - 280 ' open / close setting panel
             If Me.Height <= pMeHeight Then Me.Height = pMeHeight + 150 Else Me.Height = Me.Height - 150 ' open / close logfile panel
         End If

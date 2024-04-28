@@ -4,12 +4,13 @@ Imports System.IO                       ' working with files and folders
 Imports System.Text.RegularExpressions  ' working with regular expressions
 Module modMain
     ' Program information
-    Public pName = "NESTer ", pVersion = "2.24 ", pBuild = "240427.0110"
+    Public pName = "NESTer ", pVersion = "2.24 ", pBuild = "240428.1840"
     'pVersion is version of program (2) and year of build (2024)
     'pBuild is full date and time of build
     Public pAuthor = "muratovskyi@gmail.com " ' Vitalii Muratovskyi
     '
     Public pDebugMode = 0
+    Public pDebugPath = ""
     '
     ' декларирование функций для записи и чтения ini-файлов
     Private Declare Function WritePrivateProfileString Lib "kernel32" Alias "WritePrivateProfileStringA" (ByVal lpApplicationName As String, ByVal lpKeyName As String, ByVal lpString As String, ByVal lpFileName As String) As Integer
@@ -104,7 +105,10 @@ Module modMain
     ' Loading settings
     Sub prLoadSettings()
 
-        pDebugMode = prLoadSettings("main", "DebugMode")
+        If Strings.Right(My.Computer.FileSystem.CurrentDirectory, 5) = "Debug" Or prLoadSettings("main", "DebugMode") = 1 Then pDebugMode = 1
+
+        ' add this prefix before all path where find all files (example IDE path \NESTer2\bin\Debug transform to ..\..\ root of NESTer2 )
+        If pDebugMode = 1 Then pDebugPath = "..\."
 
         Dim CurPosInList As String = ""
         pCurentGamePlatform = prLoadSettings("main", "CurentGamePlatform")                                 ' current gaming platform NES or SMD
@@ -118,12 +122,12 @@ Module modMain
         End If
 
         ' Checking bundled emulators
-        Dim nestopia = prLoadSettings("emulators", "nestopia")
-        Dim fceux = prLoadSettings("emulators", "fceux")
-        Dim fusion = prLoadSettings("emulators", "fusion")
-        Dim gens = prLoadSettings("emulators", "gens")
-        Dim snes9x = prLoadSettings("emulators", "snes9x")
-        Dim ares = prLoadSettings("emulators", "ares")
+        Dim nestopia = pDebugPath & prLoadSettings("emulators", "nestopia")
+        Dim fceux = pDebugPath & prLoadSettings("emulators", "fceux")
+        Dim fusion = pDebugPath & prLoadSettings("emulators", "fusion")
+        Dim gens = pDebugPath & prLoadSettings("emulators", "gens")
+        Dim snes9x = pDebugPath & prLoadSettings("emulators", "snes9x")
+        Dim ares = pDebugPath & prLoadSettings("emulators", "ares")
 
 
         ' Checking NES
@@ -160,9 +164,9 @@ Module modMain
             frmMain.txtRadioEmuSega2.Text = gens
         End If
 
-        frmMain.txtRadioEmuNes3.Text = prLoadSettings("main", "Emulator_NES")
-        frmMain.txtRadioEmuSnes3.Text = prLoadSettings("main", "Emulator_SNES")
-        frmMain.txtRadioEmuSega3.Text = prLoadSettings("main", "Emulator_SMD")
+        frmMain.txtRadioEmuNes3.Text = pDebugPath & prLoadSettings("main", "Emulator_NES")
+        frmMain.txtRadioEmuSnes3.Text = pDebugPath & prLoadSettings("main", "Emulator_SNES")
+        frmMain.txtRadioEmuSega3.Text = pDebugPath & prLoadSettings("main", "Emulator_SMD")
 
         Dim CurEmuNes As Integer = prLoadSettings("main", "CurEmuNes")
         If CurEmuNes = 1 Then
@@ -193,9 +197,9 @@ Module modMain
 
         'Paths to all required components
         If pCurentGamePlatform = "NES" Then
-            pPatchToEmulator = prLoadSettings("main", "Emulator_NES")
-            pPatchToRoms = prLoadSettings("main", "roms_NES")
-            pPatchToScreens = prLoadSettings("main", "screens_NES")
+            pPatchToEmulator = pDebugPath & prLoadSettings("main", "Emulator_NES")
+            pPatchToRoms = pDebugPath & prLoadSettings("main", "roms_NES")
+            pPatchToScreens = pDebugPath & prLoadSettings("main", "screens_NES")
             CurPosInList = prLoadSettings("main", "CurentPositionNES")
             frmMain.txtDescrSega.Visible = False
             frmMain.txtDescrDendy.Visible = True
@@ -204,9 +208,9 @@ Module modMain
             frmMain.toolbarBtnSega.Checked = False
 
         ElseIf pCurentGamePlatform = "SNES" Then
-            pPatchToEmulator = prLoadSettings("main", "Emulator_SNES")
-            pPatchToRoms = prLoadSettings("main", "roms_SNES")
-            pPatchToScreens = prLoadSettings("main", "screens_SNES")
+            pPatchToEmulator = pDebugPath & prLoadSettings("main", "Emulator_SNES")
+            pPatchToRoms = pDebugPath & prLoadSettings("main", "roms_SNES")
+            pPatchToScreens = pDebugPath & prLoadSettings("main", "screens_SNES")
             CurPosInList = prLoadSettings("main", "CurentPositionSNES")
             frmMain.txtDescrSega.Visible = False
             frmMain.txtDescrDendy.Visible = True
@@ -215,9 +219,9 @@ Module modMain
             frmMain.toolbarBtnSega.Checked = False
 
         ElseIf pCurentGamePlatform = "SMD" Then
-            pPatchToEmulator = prLoadSettings("main", "Emulator_SMD")
-            pPatchToRoms = prLoadSettings("main", "roms_SMD")
-            pPatchToScreens = prLoadSettings("main", "screens_SMD")
+            pPatchToEmulator = pDebugPath & prLoadSettings("main", "Emulator_SMD")
+            pPatchToRoms = pDebugPath & prLoadSettings("main", "roms_SMD")
+            pPatchToScreens = pDebugPath & prLoadSettings("main", "screens_SMD")
             CurPosInList = prLoadSettings("main", "CurentPositionSMD")
             frmMain.txtDescrSega.Visible = True
             frmMain.txtDescrDendy.Visible = False
