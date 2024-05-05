@@ -1,1 +1,1 @@
-![зображення](https://github.com/myp1blka/NESTer2/assets/48731980/ef68ba47-6d90-4d26-bbbc-a480b04c8fde)
+![зображення](https://github.com/myp1blka/NESTer2/assets/48731980/35ed809d-3537-4e4e-ab69-408032a7e8eb)
