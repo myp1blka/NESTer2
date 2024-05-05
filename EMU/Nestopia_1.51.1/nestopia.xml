@@ -258,7 +258,7 @@
         </keys>
     </input>
     <language>
-        <file>D:\dev\WindowsProgram\NESter2\Source\NESTer2\EMU\Nestopia\language\english.nlg</file>
+        <file>D:\dev\WindowsProgram\NESter2\Source\NESTer2\EMU\Nestopia_1.51.1\language\english.nlg</file>
     </language>
     <launcher>
         <search>
@@ -320,7 +320,7 @@
         <cheats>
             <auto-load>no</auto-load>
             <auto-save>no</auto-save>
-            <directory>..\..\EMU\Nestopia\cheats\</directory>
+            <directory>..\..\EMU\Nestopia_1.51.1\cheats\</directory>
         </cheats>
         <fds>
             <bios />
@@ -328,13 +328,13 @@
             <save-method>patch</save-method>
         </fds>
         <images>
-            <directory>..\..\EMU\Nestopia\</directory>
+            <directory>..\..\EMU\Nestopia_1.51.1\</directory>
             <use-recent-directory>no</use-recent-directory>
         </images>
         <patches>
             <auto-apply>no</auto-apply>
             <bypass-validation>no</bypass-validation>
-            <directory>..\..\EMU\Nestopia\patches\</directory>
+            <directory>..\..\EMU\Nestopia_1.51.1\patches\</directory>
         </patches>
         <recent>
             <directories>
@@ -347,32 +347,32 @@
             </directories>
             <files>
                 <file>D:\dev\WindowsProgram\NESter2\Source\NESTer2\ROM\NES\Chip &apos;n Dale Rescue Rangers 2 [T+Rus_Shedevr].zip &lt;Chip &apos;n Dale Rescue Rangers 2 [T+Rus_Shedevr].nes&gt;</file>
+                <file>D:\dev\WindowsProgram\NESter2\Source\NESTer2\ROM\NES\Addams Family, The [T+Rus_Shedevr][FAV].nes</file>
+                <file>D:\dev\WindowsProgram\NESter2\Source\NESTer2\ROM\NES\Teenage Mutant Ninja Turtles III - The Manhattan Project [T+Rus_Shedevr].zip &lt;Teenage Mutant Ninja Turtles III - The Manhattan Project [T+Rus_Shedevr].nes&gt;</file>
                 <file>D:\dev\WindowsProgram\GameEmulators\NESter2lite\Source\NESTer2\ROM\NES\Teenage Mutant Ninja Turtles III - The Manhattan Project [T+Rus_Shedevr].zip &lt;Teenage Mutant Ninja Turtles III - The Manhattan Project [T+Rus_Shedevr].nes&gt;</file>
                 <file>D:\dev\WindowsProgram\GameEmulators\NESter2lite\Source\NESTer2\ROM\NES\Super Mario 1 (R) [!].7z &lt;Super Mario 1 (R) [!].nes&gt;</file>
                 <file>D:\dev\WindowsProgram\GameEmulators\NESter2lite\Source\NESTer2\ROM\NES\Addams Family, The [T+Rus_Shedevr][FAV].nes</file>
                 <file>D:\dev\WindowsProgram\GameEmulators\NESter2lite\Source\NESTer2\ROM\NES\Contra Force [T+Rus_Griever].zip &lt;Contra Force [T+Rus_Griever].nes&gt;</file>
                 <file>D:\dev\WindowsProgram\GameEmulators\NESter2lite\Source\NESTer2\ROM\NES\Chip &apos;n Dale Rescue Rangers 2 [T+Rus_Shedevr].zip &lt;Chip &apos;n Dale Rescue Rangers 2 [T+Rus_Shedevr].nes&gt;</file>
                 <file>D:\dev\WindowsProgram\GameEmulators\NESter2lite\Source\NESTer2\ROM\NES\Ice Climber [T+Rus_Multisoft].zip &lt;Ice Climber [T+Rus_Multisoft].nes&gt;</file>
-                <file>..\..\ROM\NES\Tennis [T+Rus_Guyver].zip &lt;Tennis [T+Rus_Guyver].nes&gt;</file>
-                <file>..\..\ROM\NES\Super Mario 1 (R) [!].7z &lt;Super Mario 1 (R) [!].nes&gt;</file>
                 <locked>no</locked>
             </files>
         </recent>
         <samples>
-            <directory>..\..\EMU\Nestopia\samples\</directory>
+            <directory>..\..\EMU\Nestopia_1.51.1\samples\</directory>
         </samples>
         <saves>
-            <directory>..\..\EMU\Nestopia\save\</directory>
+            <directory>..\..\EMU\Nestopia_1.51.1\save\</directory>
             <force-read-only>no</force-read-only>
         </saves>
         <screenshots>
-            <directory>..\..\EMU\Nestopia\screenshots\</directory>
+            <directory>..\..\SCRN\NES\</directory>
             <format>png</format>
         </screenshots>
         <states>
             <auto-export>yes</auto-export>
             <auto-import>yes</auto-import>
-            <directory>..\..\EMU\Nestopia\states\</directory>
+            <directory>..\..\EMU\Nestopia_1.51.1\states\</directory>
             <use-compression>yes</use-compression>
         </states>
         <tapes>
@@ -565,10 +565,10 @@
             <window>3</window>
         </size>
         <window-position>
-            <bottom>935</bottom>
-            <left>275</left>
-            <right>1063</right>
-            <top>177</top>
+            <bottom>909</bottom>
+            <left>121</left>
+            <right>909</right>
+            <top>151</top>
         </window-position>
     </view>
 </configuration>

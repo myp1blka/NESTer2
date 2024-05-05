@@ -192,6 +192,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Glasses-Creature.ico" />
+    <Content Include="ToDo.txt" />
     <None Include="Resources\about.gif" />
     <None Include="Resources\about1.gif" />
     <None Include="Resources\add.gif" />

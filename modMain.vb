@@ -1,30 +1,35 @@
 ﻿
 ' Declaring useful functions
 Imports System.IO                       ' working with files and folders
+Imports System.Reflection
 Imports System.Text.RegularExpressions  ' working with regular expressions
 Module modMain
     ' Program information
-    Public pName = "NESTer ", pVersion = "2.24 ", pBuild = "240428.1840"
+    Public pName = "NESTer ", pVersion = "2.24 ", pBuild = "240505.2321 beta"
     'pVersion is version of program (2) and year of build (2024)
     'pBuild is full date and time of build
     Public pAuthor = "muratovskyi@gmail.com " ' Vitalii Muratovskyi
     '
-    Public pDebugMode = 0
-    Public pDebugPath = ""
     '
-    ' декларирование функций для записи и чтения ini-файлов
+    '
+    ' declarate function for read n write ini files
     Private Declare Function WritePrivateProfileString Lib "kernel32" Alias "WritePrivateProfileStringA" (ByVal lpApplicationName As String, ByVal lpKeyName As String, ByVal lpString As String, ByVal lpFileName As String) As Integer
     Private Declare Function GetPrivateProfileString Lib "kernel32" Alias "GetPrivateProfileStringA" (ByVal lpApplicationName As String, ByVal lpKeyName As String, ByVal lpDefault As String, ByVal lpReturnedString As String, ByVal nSize As Integer, ByVal lpFileName As String) As Integer
 
     ' path to the settings file
     Public pLocationSettingFile As String = Application.StartupPath & ".\settings.ini"
+    Public pDebugMode = 0 ' by default debyg mode off (0)
+    Public pDebugPath = "" ' if debug mode off, debug path from program executable file is empty
     ' Current gaming platform
     Public pCurentGamePlatform As String
     ' Paths to required components
+    Public pPatchToEmulatorsFolder As String
+    Public mEmuFoldersInDir() As String
+    Public mEmuNameFoldersInDir(10, 5) As String
     Public pPatchToEmulator As String
     Public pPatchToRoms As String
     Public pPatchToScreens As String
-    Public pPatchToDescriptions As String
+    Public pPatchToDescriptions As String ' not used yet, it was planned to add text files with a description
     Public pFavSearchStatus As String = ""
     Public pTranslatedStatus As String = ""
 
@@ -35,6 +40,11 @@ Module modMain
     Public mScreensInDir() As String
     Public mScreensInDirWoExtPath() As String
     Public mScreensInDirWoExtPathTags() As String
+
+    Public mFoldersEmulatorsInDir As String
+    Public mFilesInEmulatorDir As String
+
+
     Public pCurrentSelIndex As Short ' Current index in the list for calling the picture
 
     ' Start Program
@@ -43,7 +53,7 @@ Module modMain
         frmMain.Height = 523
         frmMain.Width = 732
 
-        frmMain.Text = pName & pVersion ' & pBuild
+        frmMain.Text = pName & pVersion & pBuild
         frmMain.txtAuthorEMail.Text = "muratovskyi@gmail.com"
         prMsgToLog(pName & pVersion & pBuild & vbCrLf)
 
@@ -60,38 +70,39 @@ Module modMain
             ' recreate the settings file in the application folder
             pLocationSettingFile = Application.StartupPath & ".\settings.ini"
 
-            prWriteSettings("main", "DebugMode", "0")
-            prWriteSettings("main", "CurentGamePlatform", "NES")
 
-            prWriteSettings("main", "emulator_NES", ".\EMU\Nestopia\nestopia.exe")
-            prWriteSettings("main", "emulator_SNES", ".\EMU\ares\ares.exe")
-            prWriteSettings("main", "emulator_SMD", ".\EMU\Gens\gens.exe")
+            prIniWriteSettings("main", "DebugMode", "0")
+            prIniWriteSettings("main", "CurentGamePlatform", "NES")
 
-            prWriteSettings("main", "roms_NES", ".\ROM\NES")
-            prWriteSettings("main", "roms_SNES", ".\ROM\SNES")
-            prWriteSettings("main", "roms_SMD", ".\ROM\SMD")
+            'prIniWriteSettings("main", "emulator_NES", ".\EMU\Nestopia\nestopia.exe")
+            'prIniWriteSettings("main", "emulator_SNES", ".\EMU\ares\ares.exe")
+            'prIniWriteSettings("main", "emulator_SMD", ".\EMU\Gens\gens.exe")
 
-            prWriteSettings("main", "screens_NES", ".\SCRN\NES")
-            prWriteSettings("main", "screens_SNES", ".\SCRN\SNES")
-            prWriteSettings("main", "screens_SMD", ".\SCRN\SMD")
+            'prIniWriteSettings("main", "roms_NES", ".\ROM\NES")
+            'prIniWriteSettings("main", "roms_SNES", ".\ROM\SNES")
+            'prIniWriteSettings("main", "roms_SMD", ".\ROM\SMD")
 
-            prWriteSettings("main", "CurentPositionNES", "0")
-            prWriteSettings("main", "CurentPositionSNES", "0")
-            prWriteSettings("main", "CurentPositionSMD", "0")
+            'prIniWriteSettings("main", "screens_NES", ".\SCRN\NES")
+            'prIniWriteSettings("main", "screens_SNES", ".\SCRN\SNES")
+            'prIniWriteSettings("main", "screens_SMD", ".\SCRN\SMD")
 
-            prWriteSettings("main", "CurEmuNes", "1")
-            prWriteSettings("main", "CurEmuSNes", "1")
-            prWriteSettings("main", "CurEmuSmd", "1")
+            'prIniWriteSettings("main", "CurentPositionNES", "0")
+            'prIniWriteSettings("main", "CurentPositionSNES", "0")
+            'prIniWriteSettings("main", "CurentPositionSMD", "0")
 
-            prWriteSettings("main", "CurentFavOrAll", "All")
-            prWriteSettings("main", "CurentTranslated", "N") 'Yes or No
+            'prIniWriteSettings("main", "CurEmuNes", "1")
+            'prIniWriteSettings("main", "CurEmuSNes", "1")
+            'prIniWriteSettings("main", "CurEmuSmd", "1")
 
-            prWriteSettings("emulators", "nestopia", ".\EMU\Nestopia\nestopia.exe")
-            prWriteSettings("emulators", "fceux", ".\EMU\fceux\fceux.exe")
-            prWriteSettings("emulators", "fusion", ".\EMU\Fusion\Fusion.exe")
-            prWriteSettings("emulators", "gens", ".\EMU\Gens\gens.exe")
-            prWriteSettings("emulators", "snes9x", ".\EMU\snes9x\snes9x-x64.exe")
-            prWriteSettings("emulators", "ares", ".\EMU\ares\ares.exe")
+            'prIniWriteSettings("main", "CurentFavOrAll", "All")
+            'prIniWriteSettings("main", "CurentTranslated", "No") 'Yes or No
+
+            'prIniWriteSettings("emulators", "nestopia", ".\EMU\Nestopia\nestopia.exe")
+            'prIniWriteSettings("emulators", "fceux", ".\EMU\fceux\fceux.exe")
+            'prIniWriteSettings("emulators", "fusion", ".\EMU\Fusion\Fusion.exe")
+            'prIniWriteSettings("emulators", "gens", ".\EMU\Gens\gens.exe")
+            'prIniWriteSettings("emulators", "snes9x", ".\EMU\snes9x\snes9x-x64.exe")
+            'prIniWriteSettings("emulators", "ares", ".\EMU\ares\ares.exe")
 
             ' let's load the new settings
             prLoadSettings()
@@ -105,102 +116,201 @@ Module modMain
     ' Loading settings
     Sub prLoadSettings()
 
-        If Strings.Right(My.Computer.FileSystem.CurrentDirectory, 5) = "Debug" Or prLoadSettings("main", "DebugMode") = 1 Then pDebugMode = 1
+        If Strings.Right(My.Computer.FileSystem.CurrentDirectory, 5) = "Debug" Or prIniLoadSettings("main", "DebugMode") = 1 Then pDebugMode = 1
+        If pDebugMode = 1 Then
+            pDebugPath = "..\."
+            pLocationSettingFile = pDebugPath & ".\settings.ini"
+        End If
+        ' add this "..\." prefix before all path where find all files (example IDE path \NESTer2\bin\Debug transform to ..\..\ root of NESTer2 )
 
-        ' add this prefix before all path where find all files (example IDE path \NESTer2\bin\Debug transform to ..\..\ root of NESTer2 )
-        If pDebugMode = 1 Then pDebugPath = "..\."
+
+
+
+
+
+
+        pPatchToEmulatorsFolder = pDebugPath & prIniLoadSettings("main", "emulators_folder") ' Folder where we stored all our emulators
+
+        frmMain.comboNes1.Items.Clear()
+        frmMain.comboNes2.Items.Clear()
+        frmMain.comboNes3.Items.Clear()
+        frmMain.comboSNes1.Items.Clear()
+        frmMain.comboSNes2.Items.Clear()
+        frmMain.comboSNes3.Items.Clear()
+        frmMain.comboSmd1.Items.Clear()
+        frmMain.comboSmd2.Items.Clear()
+        frmMain.comboSmd3.Items.Clear()
+
+        If Directory.Exists(pPatchToEmulatorsFolder) Then
+            mEmuFoldersInDir = Directory.GetDirectories(pPatchToEmulatorsFolder)
+            prMsgToLog(mEmuFoldersInDir.Length & " - emulators folders found")
+
+
+
+
+            ReDim mEmuNameFoldersInDir(mEmuFoldersInDir.Length, 5)
+            For i = 0 To mEmuFoldersInDir.Length - 1
+                ' path to emulator
+                mEmuNameFoldersInDir(i, 0) = mEmuFoldersInDir(i)
+
+                'name folder of the emulator
+                Dim mSplitPath() = Split(Path.GetFullPath(mEmuFoldersInDir(i)), "\")
+                mEmuNameFoldersInDir(i, 1) = mSplitPath(mSplitPath.Length - 1)
+
+                ' exe file of the emulator
+                Dim mExeInFolder() = Directory.GetFiles(Path.GetFullPath(mEmuFoldersInDir(i)), "*.exe")
+                'mEmuNameFoldersInDir(i, 2) = mExeInFolder(0) ' Full path to Exe
+                Dim mSplitExeInFolder() = Split(Path.GetFullPath(mExeInFolder(0)), "\")
+                mEmuNameFoldersInDir(i, 2) = mSplitExeInFolder(mSplitExeInFolder.Length - 1) ' Only Exe file
+
+
+                'prMsgToLog(mEmuNameFoldersInDir(i, 0) & vbCrLf & mEmuNameFoldersInDir(i, 1) & vbCrLf & mEmuNameFoldersInDir(i, 2))
+                'prMsgToLog("   [   " & mEmuNameFoldersInDir(i, 0) & "\" & mEmuNameFoldersInDir(i, 2) & "   ]")
+            Next
+
+
+            For i = 0 To mEmuFoldersInDir.Length - 1
+
+                frmMain.comboNes1.Items.Add(mEmuNameFoldersInDir(i, 1))
+                frmMain.comboNes2.Items.Add(mEmuNameFoldersInDir(i, 1))
+                frmMain.comboNes3.Items.Add(mEmuNameFoldersInDir(i, 1))
+
+                frmMain.comboSNes1.Items.Add(mEmuNameFoldersInDir(i, 1))
+                frmMain.comboSNes2.Items.Add(mEmuNameFoldersInDir(i, 1))
+                frmMain.comboSNes3.Items.Add(mEmuNameFoldersInDir(i, 1))
+
+                frmMain.comboSmd1.Items.Add(mEmuNameFoldersInDir(i, 1))
+                frmMain.comboSmd2.Items.Add(mEmuNameFoldersInDir(i, 1))
+                frmMain.comboSmd3.Items.Add(mEmuNameFoldersInDir(i, 1))
+
+            Next
+
+
+
+            Dim pEmulatorNes1 = prIniLoadSettings("main", "emulator_NES1")
+            Dim pEmulatorNes2 = prIniLoadSettings("main", "emulator_NES2")
+            Dim pEmulatorNes3 = prIniLoadSettings("main", "emulator_NES3")
+
+            Dim pEmulatorSNes1 = prIniLoadSettings("main", "emulator_SNES1")
+            Dim pEmulatorSNes2 = prIniLoadSettings("main", "emulator_SNES2")
+            Dim pEmulatorSNes3 = prIniLoadSettings("main", "emulator_SNES3")
+
+            Dim pEmulatorSmd1 = prIniLoadSettings("main", "emulator_SMD1")
+            Dim pEmulatorSmd2 = prIniLoadSettings("main", "emulator_SMD2")
+            Dim pEmulatorSmd3 = prIniLoadSettings("main", "emulator_SMD3")
+
+
+
+            frmMain.comboNes1.SelectedIndex = frmMain.comboNes1.FindString(pEmulatorNes1)
+            frmMain.comboNes2.SelectedIndex = frmMain.comboNes2.FindString(pEmulatorNes2)
+            frmMain.comboNes3.SelectedIndex = frmMain.comboNes3.FindString(pEmulatorNes3)
+
+            frmMain.comboSNes1.SelectedIndex = frmMain.comboSNes1.FindString(pEmulatorSNes1)
+            frmMain.comboSNes2.SelectedIndex = frmMain.comboSNes2.FindString(pEmulatorSNes2)
+            frmMain.comboSNes3.SelectedIndex = frmMain.comboSNes3.FindString(pEmulatorSNes3)
+
+            frmMain.comboSmd1.SelectedIndex = frmMain.comboSmd1.FindString(pEmulatorSmd1)
+            frmMain.comboSmd2.SelectedIndex = frmMain.comboSmd2.FindString(pEmulatorSmd2)
+            frmMain.comboSmd3.SelectedIndex = frmMain.comboSmd3.FindString(pEmulatorSmd3)
+
+
+
+        Else
+            prMsgToLog("Emulators folder NOT found" & vbCrLf & "   !!! [ " & pPatchToEmulatorsFolder & " ] !!!")
+        End If
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         Dim CurPosInList As String = ""
-        pCurentGamePlatform = prLoadSettings("main", "CurentGamePlatform")                                 ' current gaming platform NES or SMD
-        If prLoadSettings("main", "CurentFavOrAll") = "Fav" Then                                           ' current list Favorites or All
+        pCurentGamePlatform = prIniLoadSettings("main", "CurentGamePlatform")                                 ' current gaming platform NES or SNES or SMD
+        If prIniLoadSettings("main", "CurentFavOrAll") = "Fav" Then                                           ' current list Favorites or All
             pFavSearchStatus = "*[FAV]"
             frmMain.toolbarBtnFavorites.Checked = True
         End If
-        If prLoadSettings("main", "CurentTranslated") = "Y" Then                                         ' current list of translated rom or not
+        If prIniLoadSettings("main", "CurentTranslated") = "Yes" Then                                         ' current list of translated rom yes or not
             pTranslatedStatus = "*[T"
             frmMain.toolbarBtnTranslated.Checked = True
         End If
 
-        ' Checking bundled emulators
-        Dim nestopia = pDebugPath & prLoadSettings("emulators", "nestopia")
-        Dim fceux = pDebugPath & prLoadSettings("emulators", "fceux")
-        Dim fusion = pDebugPath & prLoadSettings("emulators", "fusion")
-        Dim gens = pDebugPath & prLoadSettings("emulators", "gens")
-        Dim snes9x = pDebugPath & prLoadSettings("emulators", "snes9x")
-        Dim ares = pDebugPath & prLoadSettings("emulators", "ares")
 
 
-        ' Checking NES
-        If File.Exists(nestopia) Then
-            frmMain.RadioNes1.Enabled = True
-            frmMain.txtRadioEmuNes1.Enabled = True
-            frmMain.txtRadioEmuNes1.Text = nestopia
-        End If
-        If File.Exists(fceux) Then
-            frmMain.RadioNes2.Enabled = True
-            frmMain.txtRadioEmuNes2.Enabled = True
-            frmMain.txtRadioEmuNes2.Text = fceux
-        End If
-        ' Checking SNES
-        If File.Exists(snes9x) Then
-            frmMain.RadioSnes1.Enabled = True
-            frmMain.txtRadioEmuSnes1.Enabled = True
-            frmMain.txtRadioEmuSnes1.Text = snes9x
-        End If
-        If File.Exists(ares) Then
-            frmMain.RadioSnes2.Enabled = True
-            frmMain.txtRadioEmuSnes2.Enabled = True
-            frmMain.txtRadioEmuSnes2.Text = ares
-        End If
-        ' Checking SEGA
-        If File.Exists(fusion) Then
-            frmMain.RadioSega1.Enabled = True
-            frmMain.txtRadioEmuSega1.Enabled = True
-            frmMain.txtRadioEmuSega1.Text = fusion
-        End If
-        If File.Exists(gens) Then
-            frmMain.RadioSega2.Enabled = True
-            frmMain.txtRadioEmuSega2.Enabled = True
-            frmMain.txtRadioEmuSega2.Text = gens
-        End If
 
-        frmMain.txtRadioEmuNes3.Text = pDebugPath & prLoadSettings("main", "Emulator_NES")
-        frmMain.txtRadioEmuSnes3.Text = pDebugPath & prLoadSettings("main", "Emulator_SNES")
-        frmMain.txtRadioEmuSega3.Text = pDebugPath & prLoadSettings("main", "Emulator_SMD")
 
-        Dim CurEmuNes As Integer = prLoadSettings("main", "CurEmuNes")
+        Dim pCurentSelectedEmulatorNesIndex As String = 0
+        Dim pCurentSelectedEmulatorSNesIndex As String = 0
+        Dim pCurentSelectedEmulatorSmdIndex As String = 0
+
+        Dim CurEmuNes As Integer = prIniLoadSettings("main", "CurEmuNes")
+
         If CurEmuNes = 1 Then
             frmMain.RadioNes1.Checked = True
+            pCurentSelectedEmulatorNesIndex = frmMain.comboNes1.SelectedIndex
         ElseIf CurEmuNes = 2 Then
             frmMain.RadioNes2.Checked = True
+            pCurentSelectedEmulatorNesIndex = frmMain.comboNes2.SelectedIndex
         ElseIf CurEmuNes = 3 Then
             frmMain.RadioNes3.Checked = True
+            pCurentSelectedEmulatorNesIndex = frmMain.comboNes3.SelectedIndex
         End If
 
-        Dim CurEmuSNes As Integer = prLoadSettings("main", "CurEmuSNes")
+        Dim CurEmuSNes As Integer = prIniLoadSettings("main", "CurEmuSNes")
+
         If CurEmuSNes = 1 Then
             frmMain.RadioSnes1.Checked = True
+            pCurentSelectedEmulatorSNesIndex = frmMain.comboSNes1.SelectedIndex
         ElseIf CurEmuSNes = 2 Then
             frmMain.RadioSnes2.Checked = True
+            pCurentSelectedEmulatorSNesIndex = frmMain.comboSNes2.SelectedIndex
         ElseIf CurEmuSNes = 3 Then
             frmMain.RadioSnes3.Checked = True
+            pCurentSelectedEmulatorSNesIndex = frmMain.comboSNes3.SelectedIndex
         End If
 
-        Dim CurEmuSmd As Integer = prLoadSettings("main", "CurEmuSmd")
+        Dim CurEmuSmd As Integer = prIniLoadSettings("main", "CurEmuSmd")
+
         If CurEmuSmd = 1 Then
             frmMain.RadioSega1.Checked = True
+            pCurentSelectedEmulatorSmdIndex = frmMain.comboSmd1.SelectedIndex
         ElseIf CurEmuSmd = 2 Then
             frmMain.RadioSega2.Checked = True
+            pCurentSelectedEmulatorSmdIndex = frmMain.comboSmd2.SelectedIndex
         ElseIf CurEmuSmd = 3 Then
             frmMain.RadioSega3.Checked = True
+            pCurentSelectedEmulatorSmdIndex = frmMain.comboSmd3.SelectedIndex
         End If
+
+
+
+
+
+
+
+
 
         'Paths to all required components
         If pCurentGamePlatform = "NES" Then
-            pPatchToEmulator = pDebugPath & prLoadSettings("main", "Emulator_NES")
-            pPatchToRoms = pDebugPath & prLoadSettings("main", "roms_NES")
-            pPatchToScreens = pDebugPath & prLoadSettings("main", "screens_NES")
-            CurPosInList = prLoadSettings("main", "CurentPositionNES")
+
+            pPatchToEmulator = mEmuNameFoldersInDir(pCurentSelectedEmulatorNesIndex, 0) & "\" & mEmuNameFoldersInDir(pCurentSelectedEmulatorNesIndex, 2)
+            pPatchToRoms = pDebugPath & prIniLoadSettings("main", "roms_NES")
+            pPatchToScreens = pDebugPath & prIniLoadSettings("main", "screens_NES")
+            CurPosInList = prIniLoadSettings("main", "CurentPositionNES")
             frmMain.txtDescrSega.Visible = False
             frmMain.txtDescrDendy.Visible = True
             frmMain.toolbarBtnNes.Checked = True
@@ -208,10 +318,12 @@ Module modMain
             frmMain.toolbarBtnSega.Checked = False
 
         ElseIf pCurentGamePlatform = "SNES" Then
-            pPatchToEmulator = pDebugPath & prLoadSettings("main", "Emulator_SNES")
-            pPatchToRoms = pDebugPath & prLoadSettings("main", "roms_SNES")
-            pPatchToScreens = pDebugPath & prLoadSettings("main", "screens_SNES")
-            CurPosInList = prLoadSettings("main", "CurentPositionSNES")
+
+            'pPatchToEmulator = pDebugPath & prIniLoadSettings("main", "Emulator_SNES")
+            pPatchToEmulator = mEmuNameFoldersInDir(pCurentSelectedEmulatorSNesIndex, 0) & "\" & mEmuNameFoldersInDir(pCurentSelectedEmulatorSNesIndex, 2)
+            pPatchToRoms = pDebugPath & prIniLoadSettings("main", "roms_SNES")
+            pPatchToScreens = pDebugPath & prIniLoadSettings("main", "screens_SNES")
+            CurPosInList = prIniLoadSettings("main", "CurentPositionSNES")
             frmMain.txtDescrSega.Visible = False
             frmMain.txtDescrDendy.Visible = True
             frmMain.toolbarBtnNes.Checked = False
@@ -219,10 +331,12 @@ Module modMain
             frmMain.toolbarBtnSega.Checked = False
 
         ElseIf pCurentGamePlatform = "SMD" Then
-            pPatchToEmulator = pDebugPath & prLoadSettings("main", "Emulator_SMD")
-            pPatchToRoms = pDebugPath & prLoadSettings("main", "roms_SMD")
-            pPatchToScreens = pDebugPath & prLoadSettings("main", "screens_SMD")
-            CurPosInList = prLoadSettings("main", "CurentPositionSMD")
+
+            'pPatchToEmulator = pDebugPath & prIniLoadSettings("main", "Emulator_SMD")
+            pPatchToEmulator = mEmuNameFoldersInDir(pCurentSelectedEmulatorSmdIndex, 0) & "\" & mEmuNameFoldersInDir(pCurentSelectedEmulatorSmdIndex, 2)
+            pPatchToRoms = pDebugPath & prIniLoadSettings("main", "roms_SMD")
+            pPatchToScreens = pDebugPath & prIniLoadSettings("main", "screens_SMD")
+            CurPosInList = prIniLoadSettings("main", "CurentPositionSMD")
             frmMain.txtDescrSega.Visible = True
             frmMain.txtDescrDendy.Visible = False
             frmMain.toolbarBtnNes.Checked = False
@@ -231,6 +345,12 @@ Module modMain
 
         End If
 
+
+
+
+
+
+        mFilesInDir = Nothing ' clear
         prLoadListOfFiles() ' Immediately get a list of files in the last used directory
 
         If mFilesInDir IsNot Nothing And CurPosInList <> "" Then ' If the files in the folder exist and the last position in the list is read
@@ -239,9 +359,9 @@ Module modMain
 
             End If
         Else
-            frmMain.ListBoxRoms.Items.Add(" Looks like the games folder is empty ")
+            frmMain.ListBoxRoms.Items.Add(" Looks Like the games folder Is empty ")
             frmMain.ListBoxRoms.Items.Add(" Check the folder " & pPatchToRoms)
-            prMsgToLog("Looks like the games folder is empty. Check the folder " & pPatchToRoms)
+            prMsgToLog("Looks Like the games folder Is empty. Check the folder " & pPatchToRoms)
         End If
     End Sub
 
@@ -262,11 +382,11 @@ Module modMain
         End If
 
         frmMain.ListBoxRoms.Items.Clear()
-        'frmMain.txtLogBox.Clear()
-        'pFavSearchStatus = "*[FAV]"
+
         'Get files from a folder
         If Directory.Exists(pPatchToRoms) Then 'if the folder exists, then look at it
             ' get a list of files in the games folder
+            'mFilesInDir = Nothing
             mFilesInDir = Directory.GetFiles(pPatchToRoms, "*" & frmMain.toolbarTxtSearch.Text & pTranslatedStatus & pFavSearchStatus & frmMain.txtFileMask.Text)
 
             ReDim mFilesInDirWoExtPath(mFilesInDir.Length - 1)
@@ -298,7 +418,7 @@ Module modMain
 
 
         Else
-            prMsgToLog("This folder does not exist or is empty - """ & pPatchToRoms & """")
+            prMsgToLog("This folder does Not exist Or Is empty - """ & pPatchToRoms & """")
         End If
     End Sub
 
@@ -333,13 +453,13 @@ Module modMain
 
             frmMain.ListBoxScreens.Items.Clear()
             frmMain.ListBoxScreens.Items.AddRange(mScreensInDirWoExtPath)
-            prMsgToLog(mFilesInDirWoExtPath(pSelIndex) & vbCrLf & "   " & mScreensInDir.Length & " Screenshots files found ")
+            prMsgToLog(mScreensInDir.Length & " Screenshots files found   [  " & mFilesInDirWoExtPath(pSelIndex) & "   ]  ")
             frmMain.MainMiniPictureBox.Enabled = True
             frmMain.lblScreensCounter.Visible = True
             If frmMain.ListBoxScreens.Items.Count > 0 Then frmMain.cmbNextScreen.Visible = True
 
         Else
-            prMsgToLog("Such a folder with screenshots is empty or missing - """ & pPatchToScreens & """")
+            prMsgToLog("Such a folder With screenshots Is empty Or missing - """ & pPatchToScreens & """")
         End If
     End Sub
 
@@ -437,7 +557,7 @@ Module modMain
             prMsgToLog("Incorrect path to the EMULATOR or ROM " & vbCrLf & vbCrLf _
                        & pPatchToEmulator & " " & mFilesInDir(pSelIndex))
             MsgBox("Incorrect path to the EMULATOR or ROM " & vbCrLf & vbCrLf & My.Computer.FileSystem.CurrentDirectory & vbCrLf _
-                       & "EMULATOR: " & pPatchToEmulator & vbCrLf & "ROM: " & mFilesInDir(pSelIndex))
+                       & "EMULATOR:   " & pPatchToEmulator & vbCrLf & "ROM:               " & mFilesInDir(pSelIndex))
         End If
     End Sub
 
@@ -533,9 +653,11 @@ mtkPrintErrorImage:
     Public Sub prWriteCurentGamePosition()
         If frmMain.ListBoxRoms.SelectedIndex <> -1 Then
             If pCurentGamePlatform = "NES" Then
-                prWriteSettings("main", "CurentPositionNES", frmMain.ListBoxRoms.SelectedIndex)
-            Else
-                prWriteSettings("main", "CurentPositionSMD", frmMain.ListBoxRoms.SelectedIndex)
+                prIniWriteSettings("main", "CurentPositionNES", frmMain.ListBoxRoms.SelectedIndex)
+            ElseIf pCurentGamePlatform = "SNES" Then
+                prIniWriteSettings("main", "CurentPositionSNES", frmMain.ListBoxRoms.SelectedIndex)
+            ElseIf pCurentGamePlatform = "SMD" Then
+                prIniWriteSettings("main", "CurentPositionSMD", frmMain.ListBoxRoms.SelectedIndex)
             End If
         End If
     End Sub
@@ -549,7 +671,8 @@ mtkPrintErrorImage:
 
     ' Write data into a log text field
     Sub prMsgToLog(ByVal pMsg As String)
-        frmMain.txtLogBox.AppendText(vbCrLf & DateTime.Now.ToString("HH:mm:ss") & vbCrLf & pMsg)
+        frmMain.txtLogBox.AppendText(vbCrLf & pMsg)
+        'frmMain.txtLogBox.AppendText(vbCrLf & pMsg & "      [ " & DateTime.Now.ToString("HH:mm:ss") & " ]")
 
         '  Alternative method
         'frmMain.txtLogBox.Text = frmMain.txtLogBox.Text & pMsg & vbCrLf
@@ -561,14 +684,14 @@ mtkPrintErrorImage:
     End Sub
 
     ' save the data to an ini file
-    Public Function prWriteSettings(pSection As String, pParametr As String, pValue As String)
+    Public Function prIniWriteSettings(pSection As String, pParametr As String, pValue As String)
         WritePrivateProfileString(pSection, pParametr, pValue, pLocationSettingFile)
         prMsgToLog("Parameter saved: [ " & pSection & " - " & pParametr & " ] = " & pValue)
         Return "OK"
     End Function
 
     ' read data from ini file
-    Public Function prLoadSettings(pSection As String, pParametr As String)
+    Public Function prIniLoadSettings(pSection As String, pParametr As String)
         Dim rc As String = Strings.StrDup(255, vbNullChar)
         Dim x As Integer
         x = GetPrivateProfileString(pSection, pParametr, "", rc, 255, pLocationSettingFile)

@@ -76,27 +76,25 @@ Partial Class frmMain
         Me.RadioNes1 = New System.Windows.Forms.RadioButton()
         Me.RadioNes2 = New System.Windows.Forms.RadioButton()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.btnOtherNesEmu = New System.Windows.Forms.Button()
-        Me.txtRadioEmuNes3 = New System.Windows.Forms.TextBox()
-        Me.txtRadioEmuNes2 = New System.Windows.Forms.TextBox()
-        Me.txtRadioEmuNes1 = New System.Windows.Forms.TextBox()
+        Me.comboNes3 = New System.Windows.Forms.ComboBox()
+        Me.comboNes2 = New System.Windows.Forms.ComboBox()
+        Me.comboNes1 = New System.Windows.Forms.ComboBox()
         Me.RadioNes3 = New System.Windows.Forms.RadioButton()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.btnOtherSmdEmu = New System.Windows.Forms.Button()
-        Me.txtRadioEmuSega3 = New System.Windows.Forms.TextBox()
-        Me.txtRadioEmuSega2 = New System.Windows.Forms.TextBox()
+        Me.comboSmd3 = New System.Windows.Forms.ComboBox()
+        Me.comboSmd2 = New System.Windows.Forms.ComboBox()
+        Me.comboSmd1 = New System.Windows.Forms.ComboBox()
         Me.RadioSega3 = New System.Windows.Forms.RadioButton()
-        Me.txtRadioEmuSega1 = New System.Windows.Forms.TextBox()
         Me.RadioSega2 = New System.Windows.Forms.RadioButton()
         Me.RadioSega1 = New System.Windows.Forms.RadioButton()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.btnOtherSNesEmu = New System.Windows.Forms.Button()
-        Me.txtRadioEmuSnes3 = New System.Windows.Forms.TextBox()
-        Me.txtRadioEmuSnes2 = New System.Windows.Forms.TextBox()
-        Me.txtRadioEmuSnes1 = New System.Windows.Forms.TextBox()
+        Me.comboSNes3 = New System.Windows.Forms.ComboBox()
+        Me.comboSNes2 = New System.Windows.Forms.ComboBox()
+        Me.comboSNes1 = New System.Windows.Forms.ComboBox()
         Me.RadioSnes3 = New System.Windows.Forms.RadioButton()
         Me.RadioSnes1 = New System.Windows.Forms.RadioButton()
         Me.RadioSnes2 = New System.Windows.Forms.RadioButton()
+        Me.cmbOpenSelfFolder = New System.Windows.Forms.Button()
         Me.ContListMenu.SuspendLayout()
         Me.TrayIconMenu.SuspendLayout()
         Me.Toolbar.SuspendLayout()
@@ -118,12 +116,12 @@ Partial Class frmMain
         '
         'cmbReloadList
         '
-        Me.cmbReloadList.Location = New System.Drawing.Point(846, 379)
+        Me.cmbReloadList.Location = New System.Drawing.Point(852, 364)
         Me.cmbReloadList.Name = "cmbReloadList"
         Me.cmbReloadList.Size = New System.Drawing.Size(127, 23)
         Me.cmbReloadList.TabIndex = 1
         Me.cmbReloadList.Tag = ""
-        Me.cmbReloadList.Text = "Reload List"
+        Me.cmbReloadList.Text = "Reload Rom List"
         Me.cmbReloadList.UseVisualStyleBackColor = True
         '
         'ListBoxRoms
@@ -171,7 +169,7 @@ Partial Class frmMain
         '
         'cmbStartEmulator
         '
-        Me.cmbStartEmulator.Location = New System.Drawing.Point(850, 28)
+        Me.cmbStartEmulator.Location = New System.Drawing.Point(852, 324)
         Me.cmbStartEmulator.Name = "cmbStartEmulator"
         Me.cmbStartEmulator.Size = New System.Drawing.Size(127, 23)
         Me.cmbStartEmulator.TabIndex = 8
@@ -201,7 +199,7 @@ Partial Class frmMain
         '
         'cmbStartGame
         '
-        Me.cmbStartGame.Location = New System.Drawing.Point(717, 28)
+        Me.cmbStartGame.Location = New System.Drawing.Point(719, 324)
         Me.cmbStartGame.Name = "cmbStartGame"
         Me.cmbStartGame.Size = New System.Drawing.Size(127, 23)
         Me.cmbStartGame.TabIndex = 1
@@ -301,7 +299,7 @@ Partial Class frmMain
         Me.Toolbar.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.toolbarLabelSearch, Me.toolbarTxtSearch, Me.toolbarBtnClear, Me.ToolStripSeparator1, Me.ToolStripSeparator3, Me.toolbarBtnNes, Me.toolbarBtnSnes, Me.toolbarBtnSega, Me.ToolStripSeparator2, Me.toolbarBtnFavorites, Me.toolbarBtnTranslated, Me.ToolStripSeparator5, Me.ToolStripSeparator6, Me.toolbarBtnAddToFav, Me.toolbarBtnRemoveFromFav, Me.toolbarLblFavSatus, Me.toolbarLblFavSatusOff, Me.ToolStripSeparator4, Me.toolbarBtnShowAbout, Me.toolbarBtnShowLog, Me.toolbarBtnShowSet, Me.ToolStripTextBox1})
         Me.Toolbar.Location = New System.Drawing.Point(0, 0)
         Me.Toolbar.Name = "Toolbar"
-        Me.Toolbar.Size = New System.Drawing.Size(798, 25)
+        Me.Toolbar.Size = New System.Drawing.Size(666, 25)
         Me.Toolbar.TabIndex = 35
         Me.Toolbar.Text = "ToolStrip1"
         '
@@ -492,7 +490,7 @@ Partial Class frmMain
         '
         'txtFileMask
         '
-        Me.txtFileMask.Location = New System.Drawing.Point(922, 353)
+        Me.txtFileMask.Location = New System.Drawing.Point(922, 411)
         Me.txtFileMask.Name = "txtFileMask"
         Me.txtFileMask.Size = New System.Drawing.Size(49, 20)
         Me.txtFileMask.TabIndex = 39
@@ -502,7 +500,7 @@ Partial Class frmMain
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(716, 356)
+        Me.Label1.Location = New System.Drawing.Point(716, 414)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(184, 13)
         Me.Label1.TabIndex = 40
@@ -511,263 +509,219 @@ Partial Class frmMain
         'RadioNes1
         '
         Me.RadioNes1.AutoSize = True
-        Me.RadioNes1.Enabled = False
-        Me.RadioNes1.Location = New System.Drawing.Point(6, 19)
+        Me.RadioNes1.Location = New System.Drawing.Point(6, 24)
         Me.RadioNes1.Name = "RadioNes1"
-        Me.RadioNes1.Size = New System.Drawing.Size(67, 17)
+        Me.RadioNes1.Size = New System.Drawing.Size(14, 13)
         Me.RadioNes1.TabIndex = 41
         Me.RadioNes1.TabStop = True
-        Me.RadioNes1.Text = "Nestopia"
         Me.RadioNes1.UseVisualStyleBackColor = True
         '
         'RadioNes2
         '
         Me.RadioNes2.AutoSize = True
-        Me.RadioNes2.Enabled = False
-        Me.RadioNes2.Location = New System.Drawing.Point(6, 42)
+        Me.RadioNes2.Location = New System.Drawing.Point(6, 46)
         Me.RadioNes2.Name = "RadioNes2"
-        Me.RadioNes2.Size = New System.Drawing.Size(51, 17)
+        Me.RadioNes2.Size = New System.Drawing.Size(14, 13)
         Me.RadioNes2.TabIndex = 42
         Me.RadioNes2.TabStop = True
-        Me.RadioNes2.Text = "fceux"
         Me.RadioNes2.UseVisualStyleBackColor = True
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.btnOtherNesEmu)
-        Me.GroupBox1.Controls.Add(Me.txtRadioEmuNes3)
-        Me.GroupBox1.Controls.Add(Me.txtRadioEmuNes2)
-        Me.GroupBox1.Controls.Add(Me.txtRadioEmuNes1)
+        Me.GroupBox1.Controls.Add(Me.comboNes3)
+        Me.GroupBox1.Controls.Add(Me.comboNes2)
+        Me.GroupBox1.Controls.Add(Me.comboNes1)
         Me.GroupBox1.Controls.Add(Me.RadioNes3)
         Me.GroupBox1.Controls.Add(Me.RadioNes1)
         Me.GroupBox1.Controls.Add(Me.RadioNes2)
-        Me.GroupBox1.Location = New System.Drawing.Point(719, 57)
+        Me.GroupBox1.Location = New System.Drawing.Point(719, 28)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(258, 93)
         Me.GroupBox1.TabIndex = 43
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Emulator NES"
         '
-        'btnOtherNesEmu
+        'comboNes3
         '
-        Me.btnOtherNesEmu.Location = New System.Drawing.Point(223, 66)
-        Me.btnOtherNesEmu.Name = "btnOtherNesEmu"
-        Me.btnOtherNesEmu.Size = New System.Drawing.Size(29, 21)
-        Me.btnOtherNesEmu.TabIndex = 47
-        Me.btnOtherNesEmu.Text = "..."
-        Me.btnOtherNesEmu.UseVisualStyleBackColor = True
+        Me.comboNes3.FormattingEnabled = True
+        Me.comboNes3.Location = New System.Drawing.Point(26, 64)
+        Me.comboNes3.Name = "comboNes3"
+        Me.comboNes3.Size = New System.Drawing.Size(226, 21)
+        Me.comboNes3.TabIndex = 50
         '
-        'txtRadioEmuNes3
+        'comboNes2
         '
-        Me.txtRadioEmuNes3.Location = New System.Drawing.Point(80, 66)
-        Me.txtRadioEmuNes3.Name = "txtRadioEmuNes3"
-        Me.txtRadioEmuNes3.Size = New System.Drawing.Size(146, 20)
-        Me.txtRadioEmuNes3.TabIndex = 46
+        Me.comboNes2.FormattingEnabled = True
+        Me.comboNes2.Location = New System.Drawing.Point(26, 42)
+        Me.comboNes2.Name = "comboNes2"
+        Me.comboNes2.Size = New System.Drawing.Size(226, 21)
+        Me.comboNes2.TabIndex = 49
         '
-        'txtRadioEmuNes2
+        'comboNes1
         '
-        Me.txtRadioEmuNes2.Enabled = False
-        Me.txtRadioEmuNes2.Location = New System.Drawing.Point(80, 42)
-        Me.txtRadioEmuNes2.Name = "txtRadioEmuNes2"
-        Me.txtRadioEmuNes2.ReadOnly = True
-        Me.txtRadioEmuNes2.Size = New System.Drawing.Size(172, 20)
-        Me.txtRadioEmuNes2.TabIndex = 45
-        Me.txtRadioEmuNes2.Text = "\fceux.exe"
-        '
-        'txtRadioEmuNes1
-        '
-        Me.txtRadioEmuNes1.Enabled = False
-        Me.txtRadioEmuNes1.Location = New System.Drawing.Point(80, 20)
-        Me.txtRadioEmuNes1.Name = "txtRadioEmuNes1"
-        Me.txtRadioEmuNes1.ReadOnly = True
-        Me.txtRadioEmuNes1.Size = New System.Drawing.Size(172, 20)
-        Me.txtRadioEmuNes1.TabIndex = 44
-        Me.txtRadioEmuNes1.Text = "\nestopia.exe"
+        Me.comboNes1.FormattingEnabled = True
+        Me.comboNes1.Location = New System.Drawing.Point(26, 20)
+        Me.comboNes1.Name = "comboNes1"
+        Me.comboNes1.Size = New System.Drawing.Size(226, 21)
+        Me.comboNes1.TabIndex = 48
         '
         'RadioNes3
         '
         Me.RadioNes3.AutoSize = True
-        Me.RadioNes3.Location = New System.Drawing.Point(6, 66)
+        Me.RadioNes3.Location = New System.Drawing.Point(6, 68)
         Me.RadioNes3.Name = "RadioNes3"
-        Me.RadioNes3.Size = New System.Drawing.Size(51, 17)
+        Me.RadioNes3.Size = New System.Drawing.Size(14, 13)
         Me.RadioNes3.TabIndex = 43
         Me.RadioNes3.TabStop = True
-        Me.RadioNes3.Text = "Other"
         Me.RadioNes3.UseVisualStyleBackColor = True
         '
         'GroupBox2
         '
-        Me.GroupBox2.Controls.Add(Me.btnOtherSmdEmu)
-        Me.GroupBox2.Controls.Add(Me.txtRadioEmuSega3)
-        Me.GroupBox2.Controls.Add(Me.txtRadioEmuSega2)
+        Me.GroupBox2.Controls.Add(Me.comboSmd3)
+        Me.GroupBox2.Controls.Add(Me.comboSmd2)
+        Me.GroupBox2.Controls.Add(Me.comboSmd1)
         Me.GroupBox2.Controls.Add(Me.RadioSega3)
-        Me.GroupBox2.Controls.Add(Me.txtRadioEmuSega1)
         Me.GroupBox2.Controls.Add(Me.RadioSega2)
         Me.GroupBox2.Controls.Add(Me.RadioSega1)
-        Me.GroupBox2.Location = New System.Drawing.Point(719, 254)
+        Me.GroupBox2.Location = New System.Drawing.Point(719, 225)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(258, 93)
         Me.GroupBox2.TabIndex = 44
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Emulator Sega"
         '
-        'btnOtherSmdEmu
+        'comboSmd3
         '
-        Me.btnOtherSmdEmu.Location = New System.Drawing.Point(225, 64)
-        Me.btnOtherSmdEmu.Name = "btnOtherSmdEmu"
-        Me.btnOtherSmdEmu.Size = New System.Drawing.Size(29, 21)
-        Me.btnOtherSmdEmu.TabIndex = 47
-        Me.btnOtherSmdEmu.Text = "..."
-        Me.btnOtherSmdEmu.UseVisualStyleBackColor = True
+        Me.comboSmd3.FormattingEnabled = True
+        Me.comboSmd3.Location = New System.Drawing.Point(26, 64)
+        Me.comboSmd3.Name = "comboSmd3"
+        Me.comboSmd3.Size = New System.Drawing.Size(226, 21)
+        Me.comboSmd3.TabIndex = 50
         '
-        'txtRadioEmuSega3
+        'comboSmd2
         '
-        Me.txtRadioEmuSega3.Location = New System.Drawing.Point(82, 64)
-        Me.txtRadioEmuSega3.Name = "txtRadioEmuSega3"
-        Me.txtRadioEmuSega3.Size = New System.Drawing.Size(146, 20)
-        Me.txtRadioEmuSega3.TabIndex = 46
+        Me.comboSmd2.FormattingEnabled = True
+        Me.comboSmd2.Location = New System.Drawing.Point(26, 42)
+        Me.comboSmd2.Name = "comboSmd2"
+        Me.comboSmd2.Size = New System.Drawing.Size(226, 21)
+        Me.comboSmd2.TabIndex = 49
         '
-        'txtRadioEmuSega2
+        'comboSmd1
         '
-        Me.txtRadioEmuSega2.Enabled = False
-        Me.txtRadioEmuSega2.Location = New System.Drawing.Point(82, 41)
-        Me.txtRadioEmuSega2.Name = "txtRadioEmuSega2"
-        Me.txtRadioEmuSega2.ReadOnly = True
-        Me.txtRadioEmuSega2.Size = New System.Drawing.Size(172, 20)
-        Me.txtRadioEmuSega2.TabIndex = 45
-        Me.txtRadioEmuSega2.Text = "\Gens.exe"
+        Me.comboSmd1.FormattingEnabled = True
+        Me.comboSmd1.Location = New System.Drawing.Point(26, 20)
+        Me.comboSmd1.Name = "comboSmd1"
+        Me.comboSmd1.Size = New System.Drawing.Size(226, 21)
+        Me.comboSmd1.TabIndex = 48
         '
         'RadioSega3
         '
         Me.RadioSega3.AutoSize = True
         Me.RadioSega3.Location = New System.Drawing.Point(8, 68)
         Me.RadioSega3.Name = "RadioSega3"
-        Me.RadioSega3.Size = New System.Drawing.Size(51, 17)
+        Me.RadioSega3.Size = New System.Drawing.Size(14, 13)
         Me.RadioSega3.TabIndex = 2
         Me.RadioSega3.TabStop = True
-        Me.RadioSega3.Text = "Other"
         Me.RadioSega3.UseVisualStyleBackColor = True
-        '
-        'txtRadioEmuSega1
-        '
-        Me.txtRadioEmuSega1.Enabled = False
-        Me.txtRadioEmuSega1.Location = New System.Drawing.Point(82, 19)
-        Me.txtRadioEmuSega1.Name = "txtRadioEmuSega1"
-        Me.txtRadioEmuSega1.ReadOnly = True
-        Me.txtRadioEmuSega1.Size = New System.Drawing.Size(172, 20)
-        Me.txtRadioEmuSega1.TabIndex = 44
-        Me.txtRadioEmuSega1.Text = "\Fusion.exe"
         '
         'RadioSega2
         '
         Me.RadioSega2.AutoSize = True
-        Me.RadioSega2.Enabled = False
-        Me.RadioSega2.Location = New System.Drawing.Point(8, 44)
+        Me.RadioSega2.Location = New System.Drawing.Point(8, 46)
         Me.RadioSega2.Name = "RadioSega2"
-        Me.RadioSega2.Size = New System.Drawing.Size(50, 17)
+        Me.RadioSega2.Size = New System.Drawing.Size(14, 13)
         Me.RadioSega2.TabIndex = 1
         Me.RadioSega2.TabStop = True
-        Me.RadioSega2.Text = "Gens"
         Me.RadioSega2.UseVisualStyleBackColor = True
         '
         'RadioSega1
         '
         Me.RadioSega1.AutoSize = True
-        Me.RadioSega1.Enabled = False
-        Me.RadioSega1.Location = New System.Drawing.Point(8, 20)
+        Me.RadioSega1.Location = New System.Drawing.Point(8, 24)
         Me.RadioSega1.Name = "RadioSega1"
-        Me.RadioSega1.Size = New System.Drawing.Size(56, 17)
+        Me.RadioSega1.Size = New System.Drawing.Size(14, 13)
         Me.RadioSega1.TabIndex = 0
         Me.RadioSega1.TabStop = True
-        Me.RadioSega1.Text = "Fusion"
         Me.RadioSega1.UseVisualStyleBackColor = True
         '
         'GroupBox3
         '
-        Me.GroupBox3.Controls.Add(Me.btnOtherSNesEmu)
-        Me.GroupBox3.Controls.Add(Me.txtRadioEmuSnes3)
-        Me.GroupBox3.Controls.Add(Me.txtRadioEmuSnes2)
-        Me.GroupBox3.Controls.Add(Me.txtRadioEmuSnes1)
+        Me.GroupBox3.Controls.Add(Me.comboSNes3)
+        Me.GroupBox3.Controls.Add(Me.comboSNes2)
+        Me.GroupBox3.Controls.Add(Me.comboSNes1)
         Me.GroupBox3.Controls.Add(Me.RadioSnes3)
         Me.GroupBox3.Controls.Add(Me.RadioSnes1)
         Me.GroupBox3.Controls.Add(Me.RadioSnes2)
-        Me.GroupBox3.Location = New System.Drawing.Point(719, 156)
+        Me.GroupBox3.Location = New System.Drawing.Point(719, 127)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(258, 93)
         Me.GroupBox3.TabIndex = 45
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Emulator SNES"
         '
-        'btnOtherSNesEmu
+        'comboSNes3
         '
-        Me.btnOtherSNesEmu.Location = New System.Drawing.Point(223, 66)
-        Me.btnOtherSNesEmu.Name = "btnOtherSNesEmu"
-        Me.btnOtherSNesEmu.Size = New System.Drawing.Size(29, 21)
-        Me.btnOtherSNesEmu.TabIndex = 47
-        Me.btnOtherSNesEmu.Text = "..."
-        Me.btnOtherSNesEmu.UseVisualStyleBackColor = True
+        Me.comboSNes3.FormattingEnabled = True
+        Me.comboSNes3.Location = New System.Drawing.Point(26, 64)
+        Me.comboSNes3.Name = "comboSNes3"
+        Me.comboSNes3.Size = New System.Drawing.Size(226, 21)
+        Me.comboSNes3.TabIndex = 50
         '
-        'txtRadioEmuSnes3
+        'comboSNes2
         '
-        Me.txtRadioEmuSnes3.Location = New System.Drawing.Point(80, 66)
-        Me.txtRadioEmuSnes3.Name = "txtRadioEmuSnes3"
-        Me.txtRadioEmuSnes3.Size = New System.Drawing.Size(146, 20)
-        Me.txtRadioEmuSnes3.TabIndex = 46
+        Me.comboSNes2.FormattingEnabled = True
+        Me.comboSNes2.Location = New System.Drawing.Point(26, 42)
+        Me.comboSNes2.Name = "comboSNes2"
+        Me.comboSNes2.Size = New System.Drawing.Size(226, 21)
+        Me.comboSNes2.TabIndex = 49
         '
-        'txtRadioEmuSnes2
+        'comboSNes1
         '
-        Me.txtRadioEmuSnes2.Enabled = False
-        Me.txtRadioEmuSnes2.Location = New System.Drawing.Point(80, 42)
-        Me.txtRadioEmuSnes2.Name = "txtRadioEmuSnes2"
-        Me.txtRadioEmuSnes2.ReadOnly = True
-        Me.txtRadioEmuSnes2.Size = New System.Drawing.Size(172, 20)
-        Me.txtRadioEmuSnes2.TabIndex = 45
-        Me.txtRadioEmuSnes2.Text = "\ares.exe"
-        '
-        'txtRadioEmuSnes1
-        '
-        Me.txtRadioEmuSnes1.Enabled = False
-        Me.txtRadioEmuSnes1.Location = New System.Drawing.Point(80, 20)
-        Me.txtRadioEmuSnes1.Name = "txtRadioEmuSnes1"
-        Me.txtRadioEmuSnes1.ReadOnly = True
-        Me.txtRadioEmuSnes1.Size = New System.Drawing.Size(172, 20)
-        Me.txtRadioEmuSnes1.TabIndex = 44
-        Me.txtRadioEmuSnes1.Text = "\snes9x-x64.exe"
+        Me.comboSNes1.FormattingEnabled = True
+        Me.comboSNes1.Location = New System.Drawing.Point(26, 20)
+        Me.comboSNes1.Name = "comboSNes1"
+        Me.comboSNes1.Size = New System.Drawing.Size(226, 21)
+        Me.comboSNes1.TabIndex = 48
         '
         'RadioSnes3
         '
         Me.RadioSnes3.AutoSize = True
-        Me.RadioSnes3.Location = New System.Drawing.Point(6, 66)
+        Me.RadioSnes3.Location = New System.Drawing.Point(6, 68)
         Me.RadioSnes3.Name = "RadioSnes3"
-        Me.RadioSnes3.Size = New System.Drawing.Size(51, 17)
+        Me.RadioSnes3.Size = New System.Drawing.Size(14, 13)
         Me.RadioSnes3.TabIndex = 43
         Me.RadioSnes3.TabStop = True
-        Me.RadioSnes3.Text = "Other"
         Me.RadioSnes3.UseVisualStyleBackColor = True
         '
         'RadioSnes1
         '
         Me.RadioSnes1.AutoSize = True
-        Me.RadioSnes1.Enabled = False
-        Me.RadioSnes1.Location = New System.Drawing.Point(6, 19)
+        Me.RadioSnes1.Location = New System.Drawing.Point(6, 24)
         Me.RadioSnes1.Name = "RadioSnes1"
-        Me.RadioSnes1.Size = New System.Drawing.Size(58, 17)
+        Me.RadioSnes1.Size = New System.Drawing.Size(14, 13)
         Me.RadioSnes1.TabIndex = 41
         Me.RadioSnes1.TabStop = True
-        Me.RadioSnes1.Text = "snes9x"
         Me.RadioSnes1.UseVisualStyleBackColor = True
         '
         'RadioSnes2
         '
         Me.RadioSnes2.AutoSize = True
-        Me.RadioSnes2.Enabled = False
-        Me.RadioSnes2.Location = New System.Drawing.Point(6, 42)
+        Me.RadioSnes2.Location = New System.Drawing.Point(6, 46)
         Me.RadioSnes2.Name = "RadioSnes2"
-        Me.RadioSnes2.Size = New System.Drawing.Size(45, 17)
+        Me.RadioSnes2.Size = New System.Drawing.Size(14, 13)
         Me.RadioSnes2.TabIndex = 42
         Me.RadioSnes2.TabStop = True
-        Me.RadioSnes2.Text = "ares"
         Me.RadioSnes2.UseVisualStyleBackColor = True
+        '
+        'cmbOpenSelfFolder
+        '
+        Me.cmbOpenSelfFolder.Location = New System.Drawing.Point(719, 364)
+        Me.cmbOpenSelfFolder.Name = "cmbOpenSelfFolder"
+        Me.cmbOpenSelfFolder.Size = New System.Drawing.Size(127, 23)
+        Me.cmbOpenSelfFolder.TabIndex = 1
+        Me.cmbOpenSelfFolder.Tag = ""
+        Me.cmbOpenSelfFolder.Text = "Open Self Folder"
+        Me.cmbOpenSelfFolder.UseVisualStyleBackColor = True
         '
         'frmMain
         '
@@ -788,6 +742,7 @@ Partial Class frmMain
         Me.Controls.Add(Me.ListBoxScreens)
         Me.Controls.Add(Me.MainMiniPictureBox)
         Me.Controls.Add(Me.cmbStartEmulator)
+        Me.Controls.Add(Me.cmbOpenSelfFolder)
         Me.Controls.Add(Me.cmbReloadList)
         Me.Controls.Add(Me.txtLogBox)
         Me.Controls.Add(Me.txtDescrSega)
@@ -868,24 +823,22 @@ Partial Class frmMain
     Friend WithEvents RadioSega3 As RadioButton
     Friend WithEvents RadioSega2 As RadioButton
     Friend WithEvents RadioSega1 As RadioButton
-    Friend WithEvents txtRadioEmuNes3 As TextBox
-    Friend WithEvents txtRadioEmuNes2 As TextBox
-    Friend WithEvents txtRadioEmuNes1 As TextBox
-    Friend WithEvents txtRadioEmuSega2 As TextBox
-    Friend WithEvents txtRadioEmuSega1 As TextBox
-    Friend WithEvents btnOtherNesEmu As Button
-    Friend WithEvents btnOtherSmdEmu As Button
-    Friend WithEvents txtRadioEmuSega3 As TextBox
     Friend WithEvents mnuAddToFavorite As ToolStripMenuItem
     Friend WithEvents mnuRemoveFromFavorite As ToolStripMenuItem
     Friend WithEvents ToolStripTextBox1 As ToolStripTextBox
     Friend WithEvents toolbarBtnSnes As ToolStripButton
     Friend WithEvents GroupBox3 As GroupBox
-    Friend WithEvents btnOtherSNesEmu As Button
-    Friend WithEvents txtRadioEmuSnes3 As TextBox
-    Friend WithEvents txtRadioEmuSnes2 As TextBox
-    Friend WithEvents txtRadioEmuSnes1 As TextBox
     Friend WithEvents RadioSnes3 As RadioButton
     Friend WithEvents RadioSnes1 As RadioButton
     Friend WithEvents RadioSnes2 As RadioButton
+    Friend WithEvents cmbOpenSelfFolder As Button
+    Friend WithEvents comboNes2 As ComboBox
+    Friend WithEvents comboNes1 As ComboBox
+    Friend WithEvents comboSmd2 As ComboBox
+    Friend WithEvents comboSmd1 As ComboBox
+    Friend WithEvents comboSNes2 As ComboBox
+    Friend WithEvents comboSNes1 As ComboBox
+    Friend WithEvents comboNes3 As ComboBox
+    Friend WithEvents comboSmd3 As ComboBox
+    Friend WithEvents comboSNes3 As ComboBox
 End Class

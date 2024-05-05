@@ -69,42 +69,42 @@ DebugServer
 Nintendo64
   ExpansionPak: true
   Visible: true
-  Path
+  Path: C:/Users/User/Desktop/
 Recent
-  Game-1: Super Famicom;D:/dev/WindowsProgram/GameEmulators/NESter2lite/Source/NESTer2/ROM/SNES/Addams Family Values (U) [t22].zip
-  Game-2: Super Famicom;D:/dev/WindowsProgram/GameEmulators/NESter2lite/Source/NESTer2/ROM/SNES/Addams Family Values (U) [T-Spa40%].zip
-  Game-3: Super Famicom;../../ROM/SNES/Addams Family Values (U) [T-Spa40%].zip
-  Game-4: Super Famicom;../../ROM/SNES/Addams Family Values (U) [b1].zip
-  Game-5: Super Famicom;../../ROM/SNES/Addams Family Values (U) [t22].zip
-  Game-6: Super Famicom;../../ROM/SNES/Addams Family Values (U) [T+Spa99.9%_DarkN].zip
-  Game-7: Super Famicom;../../ROM/SNES/Addams Family Values (U) [T-Spa99%_DarkN].zip
-  Game-8: Super Famicom;../../ROM/SNES/Addams Family Values (E).zip
-  Game-9: Super Famicom;../../ROM/SNES/Addams Family Values (U) [t2].zip
+  Game-1: Atari 2600;D:/dev/WindowsProgram/NESter2/Source/NESTer2/ROM/SMD/Disney's Aladdin [T+Rus_Shedevr].[FAV].zip
+  Game-2: Super Famicom;D:/dev/WindowsProgram/NESter2/Source/NESTer2/ROM/SNES/Super Mario 3 Expert (SMA Hack).zip
+  Game-3: Famicom;D:/dev/WindowsProgram/NESter2/Source/NESTer2/ROM/NES/Contra Force [T+Rus_Griever].zip
+  Game-4: Famicom;D:/dev/WindowsProgram/NESter2/Source/NESTer2/ROM/NES/Addams Family, The [T+Rus_Shedevr][FAV].nes
+  Game-5: Nintendo 64;C:/Users/User/Desktop/007 - The World is Not Enough (U) [!].z64
+  Game-6: Super Famicom;D:/dev/WindowsProgram/GameEmulators/NESter2lite/Source/NESTer2/ROM/SNES/Addams Family Values (U) [t22].zip
+  Game-7: Super Famicom;D:/dev/WindowsProgram/GameEmulators/NESter2lite/Source/NESTer2/ROM/SNES/Addams Family Values (U) [T-Spa40%].zip
+  Game-8: Super Famicom;../../ROM/SNES/Addams Family Values (U) [T-Spa40%].zip
+  Game-9: Super Famicom;../../ROM/SNES/Addams Family Values (U) [b1].zip
 VirtualPad1
-  Pad.Up: ;;
-  Pad.Down: ;;
-  Pad.Left: ;;
-  Pad.Right: ;;
+  Pad.Up: 0x1/0/76;;
+  Pad.Down: 0x1/0/73;;
+  Pad.Left: 0x1/0/72;;
+  Pad.Right: 0x1/0/74;;
   Select: ;;
-  Start: ;;
-  A..South: ;;
+  Start: 0x1/0/91;;
+  A..South: 0x1/0/58;;
   B..East: ;;
-  X..West: ;;
+  X..West: 0x1/0/60;;
   Y..North: ;;
-  L-Bumper: ;;
-  R-Bumper: ;;
+  L-Bumper: 0x1/0/36;;
+  R-Bumper: 0x1/0/56;;
   L-Trigger: ;;
-  R-Trigger: ;;
+  R-Trigger: 0x1/0/37;;
   L-Stick..Click: ;;
   R-Stick..Click: ;;
-  L-Up: ;;
-  L-Down: ;;
-  L-Left: ;;
-  L-Right: ;;
-  R-Up: ;;
-  R-Down: ;;
-  R-Left: ;;
-  R-Right: ;;
+  L-Up: 0x1/0/86;;
+  L-Down: 0x1/0/87;;
+  L-Left: 0x1/0/88;;
+  L-Right: 0x1/0/89;;
+  R-Up: 0x1/0/57;;
+  R-Down: 0x1/0/53;;
+  R-Left: 0x1/0/35;;
+  R-Right: 0x1/0/38;;
   Rumble: ;;
 VirtualMouse1
   X: ;;
@@ -270,7 +270,7 @@ Arcade
   Path
 Atari2600
   Visible: false
-  Path: C:/Users/User/Desktop/
+  Path: D:/dev/WindowsProgram/NESter2/Source/NESTer2/ROM/SMD/
 WonderSwan
   Visible: false
   Path
@@ -320,7 +320,7 @@ SuperGrafxCD
     System-Card-3.0.Japan
 Famicom
   Visible: true
-  Path: C:/Users/User/Desktop/
+  Path: D:/dev/WindowsProgram/NESter2/Source/NESTer2/ROM/NES/
 FamicomDiskSystem
   Visible: true
   Path
@@ -328,7 +328,7 @@ FamicomDiskSystem
     BIOS.Japan
 SuperFamicom
   Visible: true
-  Path: D:/dev/WindowsProgram/GameEmulators/NESter2lite/Source/NESTer2/ROM/SNES/
+  Path: D:/dev/WindowsProgram/NESter2/Source/NESTer2/ROM/SNES/
 Nintendo64DD
   Visible: true
   Path

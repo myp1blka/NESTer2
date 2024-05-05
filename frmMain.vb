@@ -53,6 +53,7 @@ Public Class frmMain
     End Sub
 
     Private Sub ListBoxRoms_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ListBoxRoms.SelectedIndexChanged
+        prWriteCurentGamePosition()
         prSelectedIndexChanged()
     End Sub
 
@@ -85,7 +86,7 @@ Public Class frmMain
         Dim IsLetter As Boolean = (e.KeyCode >= 65 AndAlso e.KeyCode <= 90) OrElse (e.KeyCode >= 97 AndAlso e.KeyCode <= 122)
         Dim IsNumber As Boolean = (e.KeyCode >= 48 AndAlso e.KeyCode <= 57)
         Dim IsWhiteSpace As Boolean = (e.KeyCode = 9) OrElse (e.KeyCode = 13) OrElse (e.KeyCode = 32)
-            ' Delete Rom by pressing Delete on keyboard
+        ' Delete Rom by pressing Delete on keyboard
         If e.KeyCode = Keys.Delete And ListBoxRoms.SelectedIndex <> -1 Then
             prDeleteRom()
             ' Start Rom by pressing Enter on keyboard
@@ -112,11 +113,11 @@ Public Class frmMain
             prCheckFavorite(ListBoxRoms.SelectedIndex)
             ' Jump to Searchbox by pressing Letter or Number or WhiteSpace on keyboard
         ElseIf IsLetter OrElse IsWhiteSpace OrElse IsNumber Then
-toolbarTxtSearch.Focus()
-toolbarTxtSearch.Text += ChrW(e.KeyCode)
-toolbarTxtSearch.SelectionStart = 1
-'prMsgToLog("IsLetter = " & IsLetter & "   IsWhiteSpace = " & IsWhiteSpace & "   IsNumber = " & IsNumber)
-End If
+            toolbarTxtSearch.Focus()
+            toolbarTxtSearch.Text += ChrW(e.KeyCode)
+            toolbarTxtSearch.SelectionStart = 1
+            'prMsgToLog("IsLetter = " & IsLetter & "   IsWhiteSpace = " & IsWhiteSpace & "   IsNumber = " & IsNumber)
+        End If
 
     End Sub
 
@@ -160,19 +161,19 @@ End If
 
     Private Sub toolbarBtnDendy_Click(sender As Object, e As EventArgs) Handles toolbarBtnNes.Click
         prWriteCurentGamePosition()
-        prWriteSettings("main", "CurentGamePlatform", "NES")
+        prIniWriteSettings("main", "CurentGamePlatform", "NES")
         prLoadSettings()
     End Sub
 
     Private Sub toolbarBtnSnes_Click(sender As Object, e As EventArgs) Handles toolbarBtnSnes.Click
         prWriteCurentGamePosition()
-        prWriteSettings("main", "CurentGamePlatform", "SNES")
+        prIniWriteSettings("main", "CurentGamePlatform", "SNES")
         prLoadSettings()
     End Sub
 
     Private Sub toolbarBtnSega_Click(sender As Object, e As EventArgs) Handles toolbarBtnSega.Click
         prWriteCurentGamePosition()
-        prWriteSettings("main", "CurentGamePlatform", "SMD")
+        prIniWriteSettings("main", "CurentGamePlatform", "SMD")
         prLoadSettings()
     End Sub
 
@@ -180,11 +181,11 @@ End If
         If toolbarBtnFavorites.Checked = False Then
             toolbarBtnFavorites.Checked = True
             pFavSearchStatus = "*[FAV]"
-            prWriteSettings("main", "CurentFavOrAll", "Fav")
+            prIniWriteSettings("main", "CurentFavOrAll", "Fav")
         Else
             toolbarBtnFavorites.Checked = False
             pFavSearchStatus = ""
-            prWriteSettings("main", "CurentFavOrAll", "All")
+            prIniWriteSettings("main", "CurentFavOrAll", "All")
         End If
         prLoadListOfFiles()
     End Sub
@@ -216,11 +217,11 @@ End If
         If toolbarBtnTranslated.Checked = True Then
             pTranslatedStatus = ""
             toolbarBtnTranslated.Checked = False
-            prWriteSettings("main", "CurentTranslated", "N") ' No
+            prIniWriteSettings("main", "CurentTranslated", "No") ' No
         Else
             pTranslatedStatus="*[T"
                          toolbarBtnTranslated.Checked= True
-            prWriteSettings("main", "CurentTranslated", "Y") 'Yes
+            prIniWriteSettings("main", "CurentTranslated", "Yes") 'Yes
         End If
         prLoadListOfFiles()
     End Sub
@@ -232,99 +233,99 @@ End If
 
     '// Select Emulator For NES
     Private Sub RadioNes1_Click(sender As Object, e As EventArgs) Handles RadioNes1.Click
-        prWriteSettings("main", "CurEmuNes", "1")
-        prWriteSettings("main", "Emulator_NES", txtRadioEmuNes1.Text)
+        prIniWriteSettings("main", "CurEmuNes", "1")
+        prIniWriteSettings("main", "emulator_NES1", comboNes1.Text)
         prLoadSettings()
     End Sub
 
     Private Sub RadioNes2_Click(sender As Object, e As EventArgs) Handles RadioNes2.Click
-        prWriteSettings("main", "CurEmuNes", "2")
-        prWriteSettings("main", "Emulator_NES", txtRadioEmuNes2.Text)
+        prIniWriteSettings("main", "CurEmuNes", "2")
+        prIniWriteSettings("main", "emulator_NES2", comboNes2.Text)
         prLoadSettings()
     End Sub
 
     Private Sub RadioNes3_Click(sender As Object, e As EventArgs) Handles RadioNes3.Click
-        prWriteSettings("main", "CurEmuNes", "3")
-        prWriteSettings("main", "Emulator_NES", txtRadioEmuNes3.Text)
+        prIniWriteSettings("main", "CurEmuNes", "3")
+        prIniWriteSettings("main", "emulator_NES3", comboNes3.Text)
         prLoadSettings()
     End Sub
 
     '// Select Emulator For SNES
     Private Sub RadioSNes1_Click(sender As Object, e As EventArgs) Handles RadioSnes1.Click
-        prWriteSettings("main", "CurEmuSNes", "1")
-        prWriteSettings("main", "Emulator_SNES", txtRadioEmuSnes1.Text)
+        prIniWriteSettings("main", "CurEmuSNes", "1")
+        prIniWriteSettings("main", "Emulator_SNES1", comboSNes1.Text)
         prLoadSettings()
     End Sub
 
     Private Sub RadioSNes2_Click(sender As Object, e As EventArgs) Handles RadioSnes2.Click
-        prWriteSettings("main", "CurEmuSNes", "2")
-        prWriteSettings("main", "Emulator_SNES", txtRadioEmuSnes2.Text)
+        prIniWriteSettings("main", "CurEmuSNes", "2")
+        prIniWriteSettings("main", "Emulator_SNES2", comboSNes2.Text)
         prLoadSettings()
     End Sub
 
     Private Sub RadioSNes3_Click(sender As Object, e As EventArgs) Handles RadioSnes3.Click
-        prWriteSettings("main", "CurEmuSNes", "3")
-        prWriteSettings("main", "Emulator_SNES", txtRadioEmuSnes3.Text)
+        prIniWriteSettings("main", "CurEmuSNes", "3")
+        prIniWriteSettings("main", "Emulator_SNES2", comboSNes3.Text)
         prLoadSettings()
     End Sub
 
     '// Select Emulator For SEGA
     Private Sub RadioSega1_Click(sender As Object, e As EventArgs) Handles RadioSega1.Click
-        prWriteSettings("main", "CurEmuSmd", "1")
-        prWriteSettings("main", "Emulator_SMD", txtRadioEmuSega1.Text)
+        prIniWriteSettings("main", "CurEmuSmd", "1")
+        prIniWriteSettings("main", "Emulator_SMD1", comboSmd1.Text)
         prLoadSettings()
     End Sub
 
     Private Sub RadioSega2_Click(sender As Object, e As EventArgs) Handles RadioSega2.Click
-        prWriteSettings("main", "CurEmuSmd", "2")
-        prWriteSettings("main", "Emulator_SMD", txtRadioEmuSega2.Text)
+        prIniWriteSettings("main", "CurEmuSmd", "2")
+        prIniWriteSettings("main", "Emulator_SMD2", comboSmd2.Text)
         prLoadSettings()
     End Sub
 
     Private Sub RadioSega3_Click(sender As Object, e As EventArgs) Handles RadioSega3.Click
-        prWriteSettings("main", "CurEmuSmd", "3")
-        prWriteSettings("main", "Emulator_SMD", txtRadioEmuSega3.Text)
+        prIniWriteSettings("main", "CurEmuSmd", "3")
+        prIniWriteSettings("main", "Emulator_SMD3", comboSmd3.Text)
         prLoadSettings()
     End Sub
 
-    Private Sub btnOtherNesEmu_Click(sender As Object, e As EventArgs) Handles btnOtherNesEmu.Click
-        Dim OpenFileDialog As New OpenFileDialog
-        OpenFileDialog.Filter = "Emulator NES (*.exe)|*.exe|All files (*.*)|*.*"
-        If (OpenFileDialog.ShowDialog() = System.Windows.Forms.DialogResult.OK) Then
-            txtRadioEmuNes3.Text = OpenFileDialog.FileName
-            prWriteSettings("main", "CurEmuNes", "3")
-            prWriteSettings("main", "Emulator_NES", txtRadioEmuNes3.Text)
-            prLoadSettings()
-        Else
-            Exit Sub
-        End If
-    End Sub
+    'Private Sub btnOtherNesEmu_Click(sender As Object, e As EventArgs)
+    '    Dim OpenFileDialog As New OpenFileDialog
+    '    OpenFileDialog.Filter = "Emulator NES (*.exe)|*.exe|All files (*.*)|*.*"
+    '    If (OpenFileDialog.ShowDialog() = System.Windows.Forms.DialogResult.OK) Then
+    '        txtRadioEmuNes3.Text = OpenFileDialog.FileName
+    '        prIniWriteSettings("main", "CurEmuNes", "3")
+    '        prIniWriteSettings("main", "other_emu_NES", txtRadioEmuNes3.Text)
+    '        prLoadSettings()
+    '    Else
+    '        Exit Sub
+    '    End If
+    'End Sub
 
-    Private Sub btnOtherSNesEmu_Click(sender As Object, e As EventArgs) Handles btnOtherSNesEmu.Click
-        Dim OpenFileDialog As New OpenFileDialog
-        OpenFileDialog.Filter = "Emulator SNES (*.exe)|*.exe|All files (*.*)|*.*"
-        If (OpenFileDialog.ShowDialog() = System.Windows.Forms.DialogResult.OK) Then
-            txtRadioEmuSnes3.Text = OpenFileDialog.FileName
-            prWriteSettings("main", "CurEmuSNes", "3")
-            prWriteSettings("main", "Emulator_SNES", txtRadioEmuSnes3.Text)
-            prLoadSettings()
-        Else
-            Exit Sub
-        End If
-    End Sub
+    'Private Sub btnOtherSNesEmu_Click(sender As Object, e As EventArgs)
+    '    Dim OpenFileDialog As New OpenFileDialog
+    '    OpenFileDialog.Filter = "Emulator SNES (*.exe)|*.exe|All files (*.*)|*.*"
+    '    If (OpenFileDialog.ShowDialog() = System.Windows.Forms.DialogResult.OK) Then
+    '        txtRadioEmuSnes3.Text = OpenFileDialog.FileName
+    '        prIniWriteSettings("main", "CurEmuSNes", "3")
+    '        prIniWriteSettings("main", "other_emu_SNES", txtRadioEmuSnes3.Text)
+    '        prLoadSettings()
+    '    Else
+    '        Exit Sub
+    '    End If
+    'End Sub
 
-    Private Sub btnOtherSmdEmu_Click(sender As Object, e As EventArgs) Handles btnOtherSmdEmu.Click
-        Dim OpenFileDialog As New OpenFileDialog
-        OpenFileDialog.Filter = "Emulator SEGA (*.exe)|*.exe|All files (*.*)|*.*"
-        If (OpenFileDialog.ShowDialog() = System.Windows.Forms.DialogResult.OK) Then
-            txtRadioEmuSega3.Text = OpenFileDialog.FileName
-            prWriteSettings("main", "CurEmuSmd", "3")
-            prWriteSettings("main", "Emulator_SMD", txtRadioEmuSega3.Text)
-            prLoadSettings()
-        Else
-            Exit Sub
-        End If
-    End Sub
+    'Private Sub btnOtherSmdEmu_Click(sender As Object, e As EventArgs)
+    '    Dim OpenFileDialog As New OpenFileDialog
+    '    OpenFileDialog.Filter = "Emulator SEGA (*.exe)|*.exe|All files (*.*)|*.*"
+    '    If (OpenFileDialog.ShowDialog() = System.Windows.Forms.DialogResult.OK) Then
+    '        txtRadioEmuSega3.Text = OpenFileDialog.FileName
+    '        prIniWriteSettings("main", "CurEmuSmd", "3")
+    '        prIniWriteSettings("main", "other_emu_SMD", txtRadioEmuSega3.Text)
+    '        prLoadSettings()
+    '    Else
+    '        Exit Sub
+    '    End If
+    'End Sub
 
     Private Sub mnuAddToFavorite_Click(sender As Object, e As EventArgs) Handles mnuAddToFavorite.Click
         prAddToFavorite(ListBoxRoms.SelectedIndex)
@@ -336,7 +337,53 @@ End If
         'prCheckFavorite(ListBoxRoms.SelectedIndex)
     End Sub
 
-    Private Sub Toolbar_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles Toolbar.ItemClicked
-
+    Private Sub cmbOpenSelfFolder_Click(sender As Object, e As EventArgs) Handles cmbOpenSelfFolder.Click
+        Process.Start(My.Computer.FileSystem.CurrentDirectory)
     End Sub
+
+
+
+    Private Sub comboNes1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles comboNes1.SelectedIndexChanged
+        prIniWriteSettings("main", "emulator_NES1", comboNes1.Text)
+    End Sub
+
+    Private Sub comboNes2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles comboNes2.SelectedIndexChanged
+        prIniWriteSettings("main", "emulator_NES2", comboNes2.Text)
+    End Sub
+
+    Private Sub comboNes3_SelectedIndexChanged(sender As Object, e As EventArgs) Handles comboNes3.SelectedIndexChanged
+        prIniWriteSettings("main", "emulator_NES3", comboNes3.Text)
+    End Sub
+
+
+
+
+    Private Sub comboSNes1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles comboSNes1.SelectedIndexChanged
+        prIniWriteSettings("main", "emulator_SNES1", comboSNes1.Text)
+    End Sub
+
+    Private Sub comboSNes2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles comboSNes2.SelectedIndexChanged
+        prIniWriteSettings("main", "emulator_SNES2", comboSNes2.Text)
+    End Sub
+
+    Private Sub comboSNes3_SelectedIndexChanged(sender As Object, e As EventArgs) Handles comboSNes3.SelectedIndexChanged
+        prIniWriteSettings("main", "emulator_SNES3", comboSNes3.Text)
+    End Sub
+
+
+
+
+
+    Private Sub comboSmd1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles comboSmd1.SelectedIndexChanged
+        prIniWriteSettings("main", "emulator_SMD1", comboSmd1.Text)
+    End Sub
+
+    Private Sub comboSmd2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles comboSmd2.SelectedIndexChanged
+        prIniWriteSettings("main", "emulator_SMD2", comboSmd2.Text)
+    End Sub
+
+    Private Sub comboSmd3_SelectedIndexChanged(sender As Object, e As EventArgs) Handles comboSmd3.SelectedIndexChanged
+        prIniWriteSettings("main", "emulator_SMD3", comboSmd3.Text)
+    End Sub
+
 End Class
