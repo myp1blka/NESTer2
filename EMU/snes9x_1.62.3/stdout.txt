@@ -4,4 +4,3 @@ No ROM file header found.
 Map_LoROMMap
 "T.M.N.T. 4" [checksum ok] LoROM, 8Mbits, ROM, NTSC, SRAM:0Kbits, ID:____, CRC32:5940BD99
 Saving	config file	D:\dev\WindowsProgram\NESter2\Source\NESTer2\EMU\snes9x_1.62.3\snes9x.conf
-Saving	config file	D:\dev\WindowsProgram\NESter2\Source\NESTer2\EMU\snes9x_1.62.3\snes9x.conf

@@ -74,35 +74,39 @@ Module modMain
             prIniWriteSettings("main", "DebugMode", "0")
             prIniWriteSettings("main", "CurentGamePlatform", "NES")
 
-            'prIniWriteSettings("main", "emulator_NES", ".\EMU\Nestopia\nestopia.exe")
-            'prIniWriteSettings("main", "emulator_SNES", ".\EMU\ares\ares.exe")
-            'prIniWriteSettings("main", "emulator_SMD", ".\EMU\Gens\gens.exe")
 
-            'prIniWriteSettings("main", "roms_NES", ".\ROM\NES")
-            'prIniWriteSettings("main", "roms_SNES", ".\ROM\SNES")
-            'prIniWriteSettings("main", "roms_SMD", ".\ROM\SMD")
 
-            'prIniWriteSettings("main", "screens_NES", ".\SCRN\NES")
-            'prIniWriteSettings("main", "screens_SNES", ".\SCRN\SNES")
-            'prIniWriteSettings("main", "screens_SMD", ".\SCRN\SMD")
+            prIniWriteSettings("main", "roms_NES", ".\ROM\NES")
+            prIniWriteSettings("main", "roms_SNES", ".\ROM\SNES")
+            prIniWriteSettings("main", "roms_SMD", ".\ROM\SMD")
 
-            'prIniWriteSettings("main", "CurentPositionNES", "0")
-            'prIniWriteSettings("main", "CurentPositionSNES", "0")
-            'prIniWriteSettings("main", "CurentPositionSMD", "0")
+            prIniWriteSettings("main", "screens_NES", ".\SCRN\NES")
+            prIniWriteSettings("main", "screens_SNES", ".\SCRN\SNES")
+            prIniWriteSettings("main", "screens_SMD", ".\SCRN\SMD")
 
-            'prIniWriteSettings("main", "CurEmuNes", "1")
-            'prIniWriteSettings("main", "CurEmuSNes", "1")
-            'prIniWriteSettings("main", "CurEmuSmd", "1")
+            prIniWriteSettings("main", "CurentPositionNES", "0")
+            prIniWriteSettings("main", "CurentPositionSNES", "0")
+            prIniWriteSettings("main", "CurentPositionSMD", "0")
 
-            'prIniWriteSettings("main", "CurentFavOrAll", "All")
-            'prIniWriteSettings("main", "CurentTranslated", "No") 'Yes or No
+            prIniWriteSettings("main", "CurEmuNes", "1")
+            prIniWriteSettings("main", "CurEmuSNes", "1")
+            prIniWriteSettings("main", "CurEmuSmd", "1")
 
-            'prIniWriteSettings("emulators", "nestopia", ".\EMU\Nestopia\nestopia.exe")
-            'prIniWriteSettings("emulators", "fceux", ".\EMU\fceux\fceux.exe")
-            'prIniWriteSettings("emulators", "fusion", ".\EMU\Fusion\Fusion.exe")
-            'prIniWriteSettings("emulators", "gens", ".\EMU\Gens\gens.exe")
-            'prIniWriteSettings("emulators", "snes9x", ".\EMU\snes9x\snes9x-x64.exe")
-            'prIniWriteSettings("emulators", "ares", ".\EMU\ares\ares.exe")
+            prIniWriteSettings("main", "CurentFavOrAll", "All")
+            prIniWriteSettings("main", "CurentTranslated", "No") 'Yes or No
+
+            prIniWriteSettings("main", "emulator_NES1", "Nestopia_1.51.1")
+            prIniWriteSettings("main", "emulator_NES2", "fceux_2.2.3")
+            prIniWriteSettings("main", "emulator_NES3", "")
+
+            prIniWriteSettings("main", "emulator_SNES1", "snes9x_1.62.3")
+            prIniWriteSettings("main", "emulator_SNES2", "ares_137")
+            prIniWriteSettings("main", "emulator_SNES3", "")
+
+            prIniWriteSettings("main", "emulator_SMD1", "Fusion_3.64")
+            prIniWriteSettings("main", "emulator_SMD2", "Gens_GS.r7")
+            prIniWriteSettings("main", "emulator_SMD3", "N")
+
 
             ' let's load the new settings
             prLoadSettings()
