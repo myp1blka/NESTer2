@@ -56,6 +56,7 @@ Partial Class frmMain
         Me.toolbarBtnSnes = New System.Windows.Forms.ToolStripButton()
         Me.toolbarBtnSega = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripSeparator7 = New System.Windows.Forms.ToolStripSeparator()
         Me.toolbarBtnFavorites = New System.Windows.Forms.ToolStripButton()
         Me.toolbarBtnTranslated = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
@@ -296,10 +297,10 @@ Partial Class frmMain
         'Toolbar
         '
         Me.Toolbar.Dock = System.Windows.Forms.DockStyle.None
-        Me.Toolbar.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.toolbarLabelSearch, Me.toolbarTxtSearch, Me.toolbarBtnClear, Me.ToolStripSeparator1, Me.ToolStripSeparator3, Me.toolbarBtnNes, Me.toolbarBtnSnes, Me.toolbarBtnSega, Me.ToolStripSeparator2, Me.toolbarBtnFavorites, Me.toolbarBtnTranslated, Me.ToolStripSeparator5, Me.ToolStripSeparator6, Me.toolbarBtnAddToFav, Me.toolbarBtnRemoveFromFav, Me.toolbarLblFavSatus, Me.toolbarLblFavSatusOff, Me.ToolStripSeparator4, Me.toolbarBtnShowAbout, Me.toolbarBtnShowLog, Me.toolbarBtnShowSet, Me.ToolStripTextBox1})
+        Me.Toolbar.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.toolbarLabelSearch, Me.toolbarTxtSearch, Me.toolbarBtnClear, Me.ToolStripSeparator1, Me.ToolStripSeparator3, Me.toolbarBtnNes, Me.toolbarBtnSnes, Me.toolbarBtnSega, Me.ToolStripSeparator2, Me.ToolStripSeparator7, Me.toolbarBtnFavorites, Me.toolbarBtnTranslated, Me.ToolStripSeparator5, Me.ToolStripSeparator6, Me.toolbarBtnAddToFav, Me.toolbarBtnRemoveFromFav, Me.toolbarLblFavSatus, Me.toolbarLblFavSatusOff, Me.ToolStripSeparator4, Me.toolbarBtnShowAbout, Me.toolbarBtnShowLog, Me.toolbarBtnShowSet, Me.ToolStripTextBox1})
         Me.Toolbar.Location = New System.Drawing.Point(0, 0)
         Me.Toolbar.Name = "Toolbar"
-        Me.Toolbar.Size = New System.Drawing.Size(666, 25)
+        Me.Toolbar.Size = New System.Drawing.Size(804, 25)
         Me.Toolbar.TabIndex = 35
         Me.Toolbar.Text = "ToolStrip1"
         '
@@ -364,6 +365,11 @@ Partial Class frmMain
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
         Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 25)
+        '
+        'ToolStripSeparator7
+        '
+        Me.ToolStripSeparator7.Name = "ToolStripSeparator7"
+        Me.ToolStripSeparator7.Size = New System.Drawing.Size(6, 25)
         '
         'toolbarBtnFavorites
         '
@@ -841,4 +847,5 @@ Partial Class frmMain
     Friend WithEvents comboNes3 As ComboBox
     Friend WithEvents comboSmd3 As ComboBox
     Friend WithEvents comboSNes3 As ComboBox
+    Friend WithEvents ToolStripSeparator7 As ToolStripSeparator
 End Class

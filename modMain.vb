@@ -5,7 +5,7 @@ Imports System.Reflection
 Imports System.Text.RegularExpressions  ' working with regular expressions
 Module modMain
     ' Program information
-    Public pName = "NESTer ", pVersion = "2.24 ", pBuild = "240506.0041 beta"
+    Public pName = "NESTer ", pVersion = "2.24 ", pBuild = "240506.2150 beta"
     'pVersion is version of program (2) and year of build (2024)
     'pBuild is full date and time of build
     Public pAuthor = "muratovskyi@gmail.com " ' Vitalii Muratovskyi
@@ -53,7 +53,7 @@ Module modMain
         frmMain.Height = 523
         frmMain.Width = 732
 
-        frmMain.Text = pName & pVersion & pBuild
+        frmMain.Text = pName & pVersion '& pBuild
         frmMain.txtAuthorEMail.Text = "muratovskyi@gmail.com"
         prMsgToLog(pName & pVersion & pBuild & vbCrLf)
 

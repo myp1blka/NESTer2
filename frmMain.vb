@@ -157,6 +157,7 @@ Public Class frmMain
 
     Private Sub toolbarBtnClear_Click(sender As Object, e As EventArgs) Handles toolbarBtnClear.Click
         toolbarTxtSearch.Text = ""
+        toolbarTxtSearch.Focus()
     End Sub
 
     Private Sub toolbarBtnDendy_Click(sender As Object, e As EventArgs) Handles toolbarBtnNes.Click
