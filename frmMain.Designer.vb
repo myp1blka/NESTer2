@@ -216,7 +216,6 @@ Partial Class frmMain
         Me.cmbPrevScreen.TabIndex = 18
         Me.cmbPrevScreen.Text = "<< |"
         Me.cmbPrevScreen.UseVisualStyleBackColor = True
-        Me.cmbPrevScreen.Visible = False
         '
         'lblScreensCounter
         '
@@ -300,7 +299,7 @@ Partial Class frmMain
         Me.Toolbar.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.toolbarLabelSearch, Me.toolbarTxtSearch, Me.toolbarBtnClear, Me.ToolStripSeparator1, Me.ToolStripSeparator3, Me.toolbarBtnNes, Me.toolbarBtnSnes, Me.toolbarBtnSega, Me.ToolStripSeparator2, Me.ToolStripSeparator7, Me.toolbarBtnFavorites, Me.toolbarBtnTranslated, Me.ToolStripSeparator5, Me.ToolStripSeparator6, Me.toolbarBtnAddToFav, Me.toolbarBtnRemoveFromFav, Me.toolbarLblFavSatus, Me.toolbarLblFavSatusOff, Me.ToolStripSeparator4, Me.toolbarBtnShowAbout, Me.toolbarBtnShowLog, Me.toolbarBtnShowSet, Me.ToolStripTextBox1})
         Me.Toolbar.Location = New System.Drawing.Point(0, 0)
         Me.Toolbar.Name = "Toolbar"
-        Me.Toolbar.Size = New System.Drawing.Size(804, 25)
+        Me.Toolbar.Size = New System.Drawing.Size(672, 25)
         Me.Toolbar.TabIndex = 35
         Me.Toolbar.Text = "ToolStrip1"
         '

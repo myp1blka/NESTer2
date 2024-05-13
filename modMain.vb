@@ -433,8 +433,8 @@ Module modMain
         Dim q() As String
 
         If Directory.Exists(pPatchToScreens) Then 'if the folder exists, then look at it
-            frmMain.cmbPrevScreen.Visible = False
-            frmMain.cmbNextScreen.Visible = False
+            'frmMain.cmbPrevScreen.Enabled = False
+            'frmMain.cmbNextScreen.Enabled = False
             mScreensInDir = Directory.GetFiles(pPatchToScreens, "*" & mFilesInDirWoExtPathTags(pSelIndex) & "*.png") ' we get a list of files in the folder with roms
             ReDim mScreensInDirWoExtPath(mScreensInDir.Length - 1)
             ReDim mScreensInDirWoExtPathTags(mScreensInDir.Length - 1)
@@ -569,13 +569,13 @@ Module modMain
     Sub prNextScreen()
         If mScreensInDir.Length <> 0 And pCurrentSelIndex <> mScreensInDir.Length - 1 Then
             pCurrentSelIndex = pCurrentSelIndex + 1
-            frmMain.cmbPrevScreen.Visible = True : frmViewScreen.cmbPrevScreen.Visible = True
+            frmMain.cmbPrevScreen.Enabled = True : frmViewScreen.cmbPrevScreen.Enabled = True
             frmMain.MainMiniPictureBox.Image = Image.FromFile(mScreensInDir(pCurrentSelIndex))
             frmViewScreen.PictureBox2.Image = Image.FromFile(mScreensInDir(pCurrentSelIndex))
             frmMain.lblScreensCounter.Text = pCurrentSelIndex.ToString + 1 & "(" & mScreensInDir.Length & ")"
             frmViewScreen.lblScreensCounter.Text = pCurrentSelIndex.ToString + 1 & "(" & mScreensInDir.Length & ")"
-            If pCurrentSelIndex = mScreensInDir.Length - 1 Then frmMain.cmbNextScreen.Visible = False
-            If pCurrentSelIndex = mScreensInDir.Length - 1 Then frmViewScreen.cmbNextScreen.Visible = False
+            If pCurrentSelIndex = mScreensInDir.Length - 1 Then frmMain.cmbNextScreen.Enabled = False
+            If pCurrentSelIndex = mScreensInDir.Length - 1 Then frmViewScreen.cmbNextScreen.Enabled = False
         End If
     End Sub
 
@@ -583,14 +583,13 @@ Module modMain
     Sub prPrevScreen()
         If mScreensInDir.Length <> 0 And pCurrentSelIndex <> 0 Then
             pCurrentSelIndex = pCurrentSelIndex - 1
-            frmMain.cmbNextScreen.Visible = True
-            frmViewScreen.cmbNextScreen.Visible = True
+            frmMain.cmbNextScreen.Enabled = True : frmViewScreen.cmbNextScreen.Enabled = True
             frmMain.MainMiniPictureBox.Image = Image.FromFile(mScreensInDir(pCurrentSelIndex))
             frmViewScreen.PictureBox2.Image = Image.FromFile(mScreensInDir(pCurrentSelIndex))
             frmMain.lblScreensCounter.Text = pCurrentSelIndex.ToString + 1 & "(" & mScreensInDir.Length & ")"
             frmViewScreen.lblScreensCounter.Text = pCurrentSelIndex.ToString + 1 & "(" & mScreensInDir.Length & ")"
-            If pCurrentSelIndex = 0 Then frmMain.cmbPrevScreen.Visible = False
-            If pCurrentSelIndex = 0 Then frmViewScreen.cmbPrevScreen.Visible = False
+            If pCurrentSelIndex = 0 Then frmMain.cmbPrevScreen.Enabled = False
+            If pCurrentSelIndex = 0 Then frmViewScreen.cmbPrevScreen.Enabled = False
         End If
     End Sub
 
