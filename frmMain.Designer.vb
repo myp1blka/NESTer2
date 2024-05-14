@@ -315,7 +315,6 @@ Partial Class frmMain
         '
         Me.toolbarTxtSearch.AutoSize = False
         Me.toolbarTxtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.toolbarTxtSearch.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.toolbarTxtSearch.Name = "toolbarTxtSearch"
         Me.toolbarTxtSearch.Size = New System.Drawing.Size(150, 23)
         Me.toolbarTxtSearch.ToolTipText = "Type game name here"
@@ -469,7 +468,6 @@ Partial Class frmMain
         Me.ToolStripTextBox1.BackColor = System.Drawing.SystemColors.Control
         Me.ToolStripTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.ToolStripTextBox1.Enabled = False
-        Me.ToolStripTextBox1.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ToolStripTextBox1.Name = "ToolStripTextBox1"
         Me.ToolStripTextBox1.Size = New System.Drawing.Size(100, 25)
         '

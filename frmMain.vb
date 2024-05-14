@@ -65,7 +65,7 @@ Public Class frmMain
         Next
 
         If Not foundJoystick Then
-            prMsgToLog("Жодного джойстика не знайдено.")
+            'prMsgToLog("Жодного джойстика не знайдено.")
         End If
     End Sub
 
@@ -99,11 +99,6 @@ Public Class frmMain
                     End If
                 End If
 
-
-
-
-
-
                 If joystickState.Buttons(7) Then ' Button Start
                     If ProcID = 0 Then
                         prLoadRom(ListBoxRoms.SelectedIndex)
@@ -120,16 +115,6 @@ Public Class frmMain
                     End If
                 End If
 
-
-
-
-
-
-
-
-
-
-
                 ' Перевіряємо натискання кнопок
                 For i As Integer = 0 To joystickState.Buttons.Length - 1
                     If joystickState.Buttons(i) Then
@@ -140,38 +125,27 @@ Public Class frmMain
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
                 ' Перевіряємо положення крестовини
                 If joystickState.PointOfViewControllers(0) = 0 Then
+                    ListBoxRoms.Focus()
                     SendKeys.Send("{UP}")
                     prMsgToLog("Крестовина вгору натиснута.")
                 ElseIf joystickState.PointOfViewControllers(0) = 9000 Then
+                    prNextScreen()
                     prMsgToLog("Крестовина праворуч натиснута.")
                 ElseIf joystickState.PointOfViewControllers(0) = 18000 Then
+                    ListBoxRoms.Focus()
                     SendKeys.Send("{DOWN}")
                     prMsgToLog("Крестовина внизу натиснута.")
                 ElseIf joystickState.PointOfViewControllers(0) = 27000 Then
+                    prPrevScreen()
                     prMsgToLog("Крестовина ліворуч натиснута.")
-
-                Else
-                    ' Якщо джойстик відключено, спробуємо знову його знайти
-                    CheckForJoystick()
                 End If
 
-            End If
-        Catch ex As Exception
 
+            End If
+
+        Catch ex As Exception
             prMsgToLog(ex.Message)
             ProcID = 0
         End Try
@@ -187,8 +161,6 @@ Public Class frmMain
             joystick.Unacquire()
             joystick.Dispose()
         End If
-
-
 
 
 
