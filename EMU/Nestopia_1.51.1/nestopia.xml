@@ -12,6 +12,27 @@
     <input>
         <allow-simultaneous-axes>no</allow-simultaneous-axes>
         <auto-fire-speed>3</auto-fire-speed>
+        <joysticks>
+            <joystick>
+                <deadzone>50</deadzone>
+                <device>A1C151C0-BDDC-11EE-8007-444553540000</device>
+                <enabled>yes</enabled>
+                <scan>
+                    <p0>yes</p0>
+                    <p1>yes</p1>
+                    <p2>yes</p2>
+                    <p3>yes</p3>
+                    <rx>yes</rx>
+                    <ry>yes</ry>
+                    <rz>yes</rz>
+                    <x>yes</x>
+                    <y>yes</y>
+                    <z>yes</z>
+                    <z0>no</z0>
+                    <z1>no</z1>
+                </scan>
+            </joystick>
+        </joysticks>
         <keys>
             <crazyclimber>
                 <left-down>...</left-down>
@@ -346,10 +367,10 @@
                 <locked>no</locked>
             </directories>
             <files>
+                <file>D:\dev\WindowsProgram\NESter2\Source\NESTer2\ROM\NES\Battle City (J) [!].zip &lt;Battle City (J) [!].nes&gt;</file>
                 <file>D:\dev\WindowsProgram\NESter2\Source\NESTer2\ROM\NES\Teenage Mutant Ninja Turtles III - The Manhattan Project (U) [!].zip &lt;Teenage Mutant Ninja Turtles III - The Manhattan Project (U) [!].nes&gt;</file>
                 <file>D:\dev\WindowsProgram\NESter2\Source\NESTer2\ROM\NES\Contra Force (U) [!].zip &lt;Contra Force (U) [!].nes&gt;</file>
                 <file>D:\dev\WindowsProgram\NESter2\Source\NESTer2\ROM\NES\Chip &apos;n Dale - Rescue Rangers 2 (U) [!].zip &lt;Chip &apos;n Dale - Rescue Rangers 2 (U) [!].nes&gt;</file>
-                <file>D:\dev\WindowsProgram\NESter2\Source\NESTer2\ROM\NES\Battle City (J) [!].zip &lt;Battle City (J) [!].nes&gt;</file>
                 <file>D:\dev\WindowsProgram\NESter2\Source\NESTer2\ROM\NES\Addams Family, The (U) [!].zip &lt;Addams Family, The (U) [!].nes&gt;</file>
                 <file>D:\dev\WindowsProgram\NESter2\Source\NESTer2\ROM\NES\Chip &apos;n Dale Rescue Rangers 2 [T+Rus_Shedevr].zip &lt;Chip &apos;n Dale Rescue Rangers 2 [T+Rus_Shedevr].nes&gt;</file>
                 <file>D:\dev\WindowsProgram\NESter2\Source\NESTer2\ROM\NES\Addams Family, The [T+Rus_Shedevr][FAV].nes</file>
@@ -565,10 +586,10 @@
             <window>3</window>
         </size>
         <window-position>
-            <bottom>961</bottom>
-            <left>1016</left>
-            <right>1804</right>
-            <top>203</top>
+            <bottom>896</bottom>
+            <left>88</left>
+            <right>876</right>
+            <top>138</top>
         </window-position>
     </view>
 </configuration>

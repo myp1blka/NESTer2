@@ -5,7 +5,7 @@ Imports System.Reflection
 Imports System.Text.RegularExpressions  ' working with regular expressions
 Module modMain
     ' Program information
-    Public pName = "NESTer ", pVersion = "2.24 ", pBuild = "240506.2150 beta"
+    Public pName = "NESTer ", pVersion = "2.24 ", pBuild = "240513.2230 beta"
     'pVersion is version of program (2) and year of build (2024)
     'pBuild is full date and time of build
     Public pAuthor = "muratovskyi@gmail.com " ' Vitalii Muratovskyi
@@ -40,6 +40,8 @@ Module modMain
     Public mScreensInDir() As String
     Public mScreensInDirWoExtPath() As String
     Public mScreensInDirWoExtPathTags() As String
+
+    Public ProcID As Short
 
     Public mFoldersEmulatorsInDir As String
     Public mFilesInEmulatorDir As String
@@ -546,14 +548,14 @@ Module modMain
 
     ' Running ROM on an emulator
     Sub prLoadRom(ByVal pSelIndex As Short) ' Running ROM on an emulator
-        Dim ProcID As Short
+        ' dim ProcID As Short
         If File.Exists(pPatchToEmulator) And File.Exists(mFilesInDir(pSelIndex)) Then ' If the paths are correct and the files exist
             prMsgToLog("Emulator  " & pPatchToEmulator & vbCrLf &
                        "Rom        " & mFilesInDir(pSelIndex))
             prMsgToLog("[ CommandLine with full path ]" & vbCrLf &
                        """" & Path.GetFullPath(pPatchToEmulator) & """ """ & Path.GetFullPath(mFilesInDir(pSelIndex)) & """")
 
-
+            prMsgToLog("ProcID=" & ProcID)
             ProcID = Shell(
                 """" & Path.GetFullPath(pPatchToEmulator) & """ """ &
                 Path.GetFullPath(mFilesInDir(pSelIndex)) & """", AppWinStyle.NormalFocus) ' Let's set the paths in quotes, in case there are spaces in the resulting path

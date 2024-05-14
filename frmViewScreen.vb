@@ -7,8 +7,8 @@
     Private Sub PictureBox2_Resize(sender As Object, e As EventArgs) Handles PictureBox2.Resize
         'prMsgToLog("Me.Width-" & Me.Width)
         'prMsgToLog("PictureBox2.Width-" & PictureBox2.Width)
-        Me.Width = PictureBox2.Width + 25 ' +25  height toolstrip
-        Me.Height = PictureBox2.Height + 25
+        Me.Width = PictureBox2.Width
+        Me.Height = PictureBox2.Height + 45 ' +25  height toolstrip
     End Sub
 
     Private Sub frmViewScreen_Load(sender As Object, e As EventArgs) Handles MyBase.Load

@@ -1,10 +1,24 @@
 ﻿
 Imports System.ComponentModel
 Imports System.IO
+Imports SharpDX
+
+
+Imports SharpDX.DirectInput
+
+
+
 
 Public Class frmMain
     Public pMeHeight As Integer
     Public pMeWidth As Integer
+
+    Dim WithEvents directInput As DirectInput
+    Dim joystick As Joystick
+    Dim joystickState As JoystickState
+    Dim timer As Timer
+
+
 
     Private Sub frmMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         prLoadProgram()
@@ -19,9 +33,122 @@ Public Class frmMain
             If Me.Height <= pMeHeight Then Me.Height = pMeHeight + 150 Else Me.Height = Me.Height - 150 ' open / close logfile panel
         End If
 
+
+
+        directInput = New DirectInput()
+        CheckForJoystick()
+        ' Запускаємо таймер для постійної перевірки стану джойстика
+        timer = New Timer()
+        timer.Interval = 180 ' Час в мілісекундах між оновленнями
+        AddHandler timer.Tick, AddressOf Timer_Tick
+        timer.Start()
+
+
+
     End Sub
 
+    Private Sub CheckForJoystick()
+        ' Звільняємо ресурси, пов'язані з попереднім джойстиком
+        If joystick IsNot Nothing Then
+            joystick.Unacquire()
+            joystick.Dispose()
+            joystick = Nothing
+        End If
+
+        ' Перевіряємо наявність джойстика
+        Dim foundJoystick As Boolean = False
+        For Each deviceInstance As DeviceInstance In directInput.GetDevices(DeviceClass.GameControl, DeviceEnumerationFlags.AttachedOnly)
+            joystick = New Joystick(directInput, deviceInstance.InstanceGuid)
+            joystick.Acquire()
+            foundJoystick = True
+            Exit For ' Обробляємо тільки перший доступний джойстик
+        Next
+
+        If Not foundJoystick Then
+            prMsgToLog("Жодного джойстика не знайдено.")
+        End If
+    End Sub
+
+
+
+    Private Sub Timer_Tick(sender As Object, e As EventArgs)
+
+        Try
+            ' Оновлюємо стан джойстика
+            If joystick IsNot Nothing Then
+                joystickState = joystick.GetCurrentState()
+
+
+                If joystickState.Buttons(6) Then
+                    If ProcID <> 0 Then
+                        ' Отримання екземпляра процесу за його ID
+                        Dim processId As Integer = ProcID ' Замініть 12345 на фактичний ID процесу
+                        Dim processToClose As Process = Process.GetProcessById(processId)
+
+                        ' Перевірка, чи процес існує
+                        If processToClose IsNot Nothing Then
+                            If Not processToClose.HasExited Then ' Перевіряємо, чи процес не завершився
+                                processToClose.CloseMainWindow() ' Закриття застосунку через головне вікно
+                                ' processToClose.Kill() ' Якщо закриття через головне вікно не працює, використовуємо метод Kill
+                                ProcID = 0
+                            End If
+                        Else
+                            MessageBox.Show("Процес з заданим ID не знайдено.", "Помилка")
+                        End If
+                    End If
+                End If
+
+
+                If joystickState.Buttons(7) And ProcID = 0 Then
+                    prLoadRom(ListBoxRoms.SelectedIndex)
+                End If
+                ' Перевіряємо натискання кнопок
+                For i As Integer = 0 To joystickState.Buttons.Length - 1
+                    If joystickState.Buttons(i) Then
+                        prMsgToLog($"Кнопка {i + 1} натиснута.")
+                    End If
+
+
+
+                Next
+
+
+                ' Перевіряємо положення крестовини
+                If joystickState.PointOfViewControllers(0) = 0 Then
+                    SendKeys.Send("{UP}")
+                    prMsgToLog("Крестовина вгору натиснута.")
+                ElseIf joystickState.PointOfViewControllers(0) = 9000 Then
+                    prMsgToLog("Крестовина праворуч натиснута.")
+                ElseIf joystickState.PointOfViewControllers(0) = 18000 Then
+                    SendKeys.Send("{DOWN}")
+                    prMsgToLog("Крестовина внизу натиснута.")
+                ElseIf joystickState.PointOfViewControllers(0) = 27000 Then
+                    prMsgToLog("Крестовина ліворуч натиснута.")
+                End If
+            Else
+                ' Якщо джойстик відключено, спробуємо знову його знайти
+                CheckForJoystick()
+            End If
+        Catch ex As Exception
+            prMsgToLog(ex.Message)
+        End Try
+    End Sub
+
+
     Private Sub frmMain_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+
+
+        ' Зупиняємо таймер та відключаємо джойстик перед закриттям форми
+        timer.Stop()
+        If joystick IsNot Nothing Then
+            joystick.Unacquire()
+            joystick.Dispose()
+        End If
+
+
+
+
+
         prExitApplication()
     End Sub
 
@@ -202,11 +329,11 @@ Public Class frmMain
     End Sub
 
     Private Sub toolbarBtnShowSet_Click(sender As Object, e As EventArgs) Handles toolbarBtnShowSet.Click
-        If Me.Width <= pMeWidth Then Me.Width= pMeWidth + 280 Else Me.Width= Me.Width - 280 ' open / close setting panel
+        If Me.Width <= pMeWidth Then Me.Width = pMeWidth + 280 Else Me.Width = Me.Width - 280 ' open / close setting panel
     End Sub
 
     Private Sub toolbarBtnShowLog_Click(sender As Object, e As EventArgs) Handles toolbarBtnShowLog.Click
-        If Me.Height <= pMeHeight Then Me.Height= pMeHeight + 150 Else Me.Height= Me.Height - 150 ' open / close logfile panel
+        If Me.Height <= pMeHeight Then Me.Height = pMeHeight + 150 Else Me.Height = Me.Height - 150 ' open / close logfile panel
     End Sub
 
     Private Sub toolbarBtnShowAbout_Click(sender As Object, e As EventArgs) Handles toolbarBtnShowAbout.Click
@@ -220,8 +347,8 @@ Public Class frmMain
             toolbarBtnTranslated.Checked = False
             prIniWriteSettings("main", "CurentTranslated", "No") ' No
         Else
-            pTranslatedStatus="*[T"
-                         toolbarBtnTranslated.Checked= True
+            pTranslatedStatus = "*[T"
+            toolbarBtnTranslated.Checked= True
             prIniWriteSettings("main", "CurentTranslated", "Yes") 'Yes
         End If
         prLoadListOfFiles()
@@ -386,5 +513,6 @@ Public Class frmMain
     Private Sub comboSmd3_SelectedIndexChanged(sender As Object, e As EventArgs) Handles comboSmd3.SelectedIndexChanged
         prIniWriteSettings("main", "emulator_SMD3", comboSmd3.Text)
     End Sub
+
 
 End Class
