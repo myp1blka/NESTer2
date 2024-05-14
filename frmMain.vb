@@ -39,7 +39,7 @@ Public Class frmMain
         CheckForJoystick()
         ' Запускаємо таймер для постійної перевірки стану джойстика
         timer = New Timer()
-        timer.Interval = 180 ' Час в мілісекундах між оновленнями
+        timer.Interval = 100 ' Час в мілісекундах між оновленнями
         AddHandler timer.Tick, AddressOf Timer_Tick
         timer.Start()
 
@@ -79,12 +79,12 @@ Public Class frmMain
                 joystickState = joystick.GetCurrentState()
 
 
-                If joystickState.Buttons(6) Then
+
+                If joystickState.Buttons(8) Or joystickState.Buttons(9) Then ' Button Select
                     If ProcID <> 0 Then
                         ' Отримання екземпляра процесу за його ID
                         Dim processId As Integer = ProcID ' Замініть 12345 на фактичний ID процесу
                         Dim processToClose As Process = Process.GetProcessById(processId)
-
                         ' Перевірка, чи процес існує
                         If processToClose IsNot Nothing Then
                             If Not processToClose.HasExited Then ' Перевіряємо, чи процес не завершився
@@ -93,24 +93,63 @@ Public Class frmMain
                                 ProcID = 0
                             End If
                         Else
-                            MessageBox.Show("Процес з заданим ID не знайдено.", "Помилка")
+                            ProcID = 0
+                            prMsgToLog("Процес з заданим ID = " & ProcID & " не знайдено.")
                         End If
                     End If
                 End If
 
 
-                If joystickState.Buttons(7) And ProcID = 0 Then
-                    prLoadRom(ListBoxRoms.SelectedIndex)
+
+
+
+
+                If joystickState.Buttons(7) Then ' Button Start
+                    If ProcID = 0 Then
+                        prLoadRom(ListBoxRoms.SelectedIndex)
+                    Else
+                        ' Отримання екземпляра процесу за його ID
+                        Dim processId2 As Integer = ProcID ' Замініть 12345 на фактичний ID процесу
+                        Dim processToClose2 As Process = Process.GetProcessById(processId2)
+                        ' Перевірка, чи процес існує
+                        If processToClose2 Is Nothing Or processToClose2.HasExited Then ' Перевіряємо, чи процес не завершився
+                            ProcID = 0
+                            prLoadRom(ListBoxRoms.SelectedIndex)
+                            prMsgToLog("Процес з заданим ID = " & ProcID & " не знайдено.")
+                        End If
+                    End If
                 End If
+
+
+
+
+
+
+
+
+
+
+
                 ' Перевіряємо натискання кнопок
                 For i As Integer = 0 To joystickState.Buttons.Length - 1
                     If joystickState.Buttons(i) Then
-                        prMsgToLog($"Кнопка {i + 1} натиснута.")
+                        prMsgToLog($"Кнопка {i} натиснута.")
+
                     End If
-
-
-
                 Next
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
                 ' Перевіряємо положення крестовини
@@ -124,13 +163,17 @@ Public Class frmMain
                     prMsgToLog("Крестовина внизу натиснута.")
                 ElseIf joystickState.PointOfViewControllers(0) = 27000 Then
                     prMsgToLog("Крестовина ліворуч натиснута.")
+
+                Else
+                    ' Якщо джойстик відключено, спробуємо знову його знайти
+                    CheckForJoystick()
                 End If
-            Else
-                ' Якщо джойстик відключено, спробуємо знову його знайти
-                CheckForJoystick()
+
             End If
         Catch ex As Exception
+
             prMsgToLog(ex.Message)
+            ProcID = 0
         End Try
     End Sub
 

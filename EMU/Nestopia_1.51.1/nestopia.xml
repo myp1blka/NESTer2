@@ -156,10 +156,10 @@
                 <up>Up</up>
             </pachinko>
             <pad-1>
-                <a>X</a>
-                <auto-fire-a>S</auto-fire-a>
-                <auto-fire-b>A</auto-fire-b>
-                <b>Z</b>
+                <a>...</a>
+                <auto-fire-a>...</auto-fire-a>
+                <auto-fire-b>...</auto-fire-b>
+                <b>...</b>
                 <down>Down</down>
                 <left>Left</left>
                 <mic>...</mic>
@@ -367,10 +367,10 @@
                 <locked>no</locked>
             </directories>
             <files>
-                <file>D:\dev\WindowsProgram\NESter2\Source\NESTer2\ROM\NES\Battle City (J) [!].zip &lt;Battle City (J) [!].nes&gt;</file>
-                <file>D:\dev\WindowsProgram\NESter2\Source\NESTer2\ROM\NES\Teenage Mutant Ninja Turtles III - The Manhattan Project (U) [!].zip &lt;Teenage Mutant Ninja Turtles III - The Manhattan Project (U) [!].nes&gt;</file>
                 <file>D:\dev\WindowsProgram\NESter2\Source\NESTer2\ROM\NES\Contra Force (U) [!].zip &lt;Contra Force (U) [!].nes&gt;</file>
                 <file>D:\dev\WindowsProgram\NESter2\Source\NESTer2\ROM\NES\Chip &apos;n Dale - Rescue Rangers 2 (U) [!].zip &lt;Chip &apos;n Dale - Rescue Rangers 2 (U) [!].nes&gt;</file>
+                <file>D:\dev\WindowsProgram\NESter2\Source\NESTer2\ROM\NES\Battle City (J) [!].zip &lt;Battle City (J) [!].nes&gt;</file>
+                <file>D:\dev\WindowsProgram\NESter2\Source\NESTer2\ROM\NES\Teenage Mutant Ninja Turtles III - The Manhattan Project (U) [!].zip &lt;Teenage Mutant Ninja Turtles III - The Manhattan Project (U) [!].nes&gt;</file>
                 <file>D:\dev\WindowsProgram\NESter2\Source\NESTer2\ROM\NES\Addams Family, The (U) [!].zip &lt;Addams Family, The (U) [!].nes&gt;</file>
                 <file>D:\dev\WindowsProgram\NESter2\Source\NESTer2\ROM\NES\Chip &apos;n Dale Rescue Rangers 2 [T+Rus_Shedevr].zip &lt;Chip &apos;n Dale Rescue Rangers 2 [T+Rus_Shedevr].nes&gt;</file>
                 <file>D:\dev\WindowsProgram\NESter2\Source\NESTer2\ROM\NES\Addams Family, The [T+Rus_Shedevr][FAV].nes</file>
