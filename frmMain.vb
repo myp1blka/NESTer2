@@ -80,7 +80,7 @@ Public Class frmMain
 
 
 
-                If joystickState.Buttons(8) Or joystickState.Buttons(9) Then ' Button Select
+                If joystickState.Buttons(8) Then ' Button Select
                     If ProcID <> 0 Then
                         ' Отримання екземпляра процесу за його ID
                         Dim processId As Integer = ProcID ' Замініть 12345 на фактичний ID процесу
@@ -408,7 +408,7 @@ Public Class frmMain
 
     Private Sub RadioSNes3_Click(sender As Object, e As EventArgs) Handles RadioSnes3.Click
         prIniWriteSettings("main", "CurEmuSNes", "3")
-        prIniWriteSettings("main", "Emulator_SNES2", comboSNes3.Text)
+        prIniWriteSettings("main", "Emulator_SNES3", comboSNes3.Text)
         prLoadSettings()
     End Sub
 
@@ -430,45 +430,6 @@ Public Class frmMain
         prIniWriteSettings("main", "Emulator_SMD3", comboSmd3.Text)
         prLoadSettings()
     End Sub
-
-    'Private Sub btnOtherNesEmu_Click(sender As Object, e As EventArgs)
-    '    Dim OpenFileDialog As New OpenFileDialog
-    '    OpenFileDialog.Filter = "Emulator NES (*.exe)|*.exe|All files (*.*)|*.*"
-    '    If (OpenFileDialog.ShowDialog() = System.Windows.Forms.DialogResult.OK) Then
-    '        txtRadioEmuNes3.Text = OpenFileDialog.FileName
-    '        prIniWriteSettings("main", "CurEmuNes", "3")
-    '        prIniWriteSettings("main", "other_emu_NES", txtRadioEmuNes3.Text)
-    '        prLoadSettings()
-    '    Else
-    '        Exit Sub
-    '    End If
-    'End Sub
-
-    'Private Sub btnOtherSNesEmu_Click(sender As Object, e As EventArgs)
-    '    Dim OpenFileDialog As New OpenFileDialog
-    '    OpenFileDialog.Filter = "Emulator SNES (*.exe)|*.exe|All files (*.*)|*.*"
-    '    If (OpenFileDialog.ShowDialog() = System.Windows.Forms.DialogResult.OK) Then
-    '        txtRadioEmuSnes3.Text = OpenFileDialog.FileName
-    '        prIniWriteSettings("main", "CurEmuSNes", "3")
-    '        prIniWriteSettings("main", "other_emu_SNES", txtRadioEmuSnes3.Text)
-    '        prLoadSettings()
-    '    Else
-    '        Exit Sub
-    '    End If
-    'End Sub
-
-    'Private Sub btnOtherSmdEmu_Click(sender As Object, e As EventArgs)
-    '    Dim OpenFileDialog As New OpenFileDialog
-    '    OpenFileDialog.Filter = "Emulator SEGA (*.exe)|*.exe|All files (*.*)|*.*"
-    '    If (OpenFileDialog.ShowDialog() = System.Windows.Forms.DialogResult.OK) Then
-    '        txtRadioEmuSega3.Text = OpenFileDialog.FileName
-    '        prIniWriteSettings("main", "CurEmuSmd", "3")
-    '        prIniWriteSettings("main", "other_emu_SMD", txtRadioEmuSega3.Text)
-    '        prLoadSettings()
-    '    Else
-    '        Exit Sub
-    '    End If
-    'End Sub
 
     Private Sub mnuAddToFavorite_Click(sender As Object, e As EventArgs) Handles mnuAddToFavorite.Click
         prAddToFavorite(ListBoxRoms.SelectedIndex)
@@ -529,5 +490,7 @@ Public Class frmMain
         prIniWriteSettings("main", "emulator_SMD3", comboSmd3.Text)
     End Sub
 
+    Private Sub RadioSnes2_CheckedChanged(sender As Object, e As EventArgs) Handles RadioSnes2.CheckedChanged
 
+    End Sub
 End Class

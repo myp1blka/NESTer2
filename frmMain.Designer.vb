@@ -96,7 +96,6 @@ Partial Class frmMain
         Me.RadioSnes1 = New System.Windows.Forms.RadioButton()
         Me.RadioSnes2 = New System.Windows.Forms.RadioButton()
         Me.cmbOpenSelfFolder = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.ContListMenu.SuspendLayout()
         Me.TrayIconMenu.SuspendLayout()
         Me.Toolbar.SuspendLayout()
@@ -315,6 +314,7 @@ Partial Class frmMain
         '
         Me.toolbarTxtSearch.AutoSize = False
         Me.toolbarTxtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.toolbarTxtSearch.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.toolbarTxtSearch.Name = "toolbarTxtSearch"
         Me.toolbarTxtSearch.Size = New System.Drawing.Size(150, 23)
         Me.toolbarTxtSearch.ToolTipText = "Type game name here"
@@ -468,6 +468,7 @@ Partial Class frmMain
         Me.ToolStripTextBox1.BackColor = System.Drawing.SystemColors.Control
         Me.ToolStripTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.ToolStripTextBox1.Enabled = False
+        Me.ToolStripTextBox1.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ToolStripTextBox1.Name = "ToolStripTextBox1"
         Me.ToolStripTextBox1.Size = New System.Drawing.Size(100, 25)
         '
@@ -727,21 +728,11 @@ Partial Class frmMain
         Me.cmbOpenSelfFolder.Text = "Open Self Folder"
         Me.cmbOpenSelfFolder.UseVisualStyleBackColor = True
         '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(719, 437)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 46
-        Me.Button1.Text = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(986, 627)
-        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
@@ -856,5 +847,4 @@ Partial Class frmMain
     Friend WithEvents comboSmd3 As ComboBox
     Friend WithEvents comboSNes3 As ComboBox
     Friend WithEvents ToolStripSeparator7 As ToolStripSeparator
-    Friend WithEvents Button1 As Button
 End Class
