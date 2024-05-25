@@ -5,7 +5,7 @@ Imports System.Reflection
 Imports System.Text.RegularExpressions  ' working with regular expressions
 Module modMain
     ' Program information
-    Public pName = "NESTer ", pVersion = "2.24 ", pBuild = "240514.0906 beta"
+    Public pName = "NESTer ", pVersion = "2.24 ", pBuild = "240525.2020 beta"
     'pVersion is version of program (2) and year of build (2024)
     'pBuild is full date and time of build
     Public pAuthor = "muratovskyi@gmail.com " ' Vitalii Muratovskyi
